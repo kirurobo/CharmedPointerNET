@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Green Circle", 0);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Red circle", 1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Yellow Circle", 2);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Yellow Filled Circle", 3);
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -58,7 +54,7 @@
             this.toolStripButtonRemoveCharm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewCharms = new System.Windows.Forms.ListView();
             this.columnHeaderImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageListCharms = new System.Windows.Forms.ImageList(this.components);
@@ -152,9 +148,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(6, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(188, 12);
+            this.label14.Size = new System.Drawing.Size(216, 36);
             this.label14.TabIndex = 2;
-            this.label14.Text = "制作：三重大学病院 IT・広報センター";
+            this.label14.Text = "マウスを素早く動かすと目立たせるソフトです。\r\n\r\n制作：三重大学";
             // 
             // groupBox2
             // 
@@ -367,7 +363,7 @@
             // splitContainerCharms.Panel1
             // 
             this.splitContainerCharms.Panel1.Controls.Add(this.toolStripEditCharms);
-            this.splitContainerCharms.Panel1.Controls.Add(this.listView1);
+            this.splitContainerCharms.Panel1.Controls.Add(this.listViewCharms);
             // 
             // splitContainerCharms.Panel2
             // 
@@ -443,25 +439,21 @@
             this.toolStripButton1.Size = new System.Drawing.Size(66, 22);
             this.toolStripButton1.Text = "標準に戻す";
             // 
-            // listView1
+            // listViewCharms
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewCharms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderImage,
             this.columnHeaderName});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
-            this.listView1.LargeImageList = this.imageListCharms;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(131, 329);
-            this.listView1.SmallImageList = this.imageListCharms;
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.listViewCharms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewCharms.LargeImageList = this.imageListCharms;
+            this.listViewCharms.Location = new System.Drawing.Point(0, 0);
+            this.listViewCharms.Name = "listViewCharms";
+            this.listViewCharms.Size = new System.Drawing.Size(131, 329);
+            this.listViewCharms.SmallImageList = this.imageListCharms;
+            this.listViewCharms.TabIndex = 0;
+            this.listViewCharms.UseCompatibleStateImageBehavior = false;
+            this.listViewCharms.View = System.Windows.Forms.View.List;
+            this.listViewCharms.SelectedIndexChanged += new System.EventHandler(this.listViewCharms_SelectedIndexChanged);
             // 
             // columnHeaderImage
             // 
@@ -845,7 +837,7 @@
         private System.Windows.Forms.SplitContainer splitContainerCharms;
         private System.Windows.Forms.ToolStrip toolStripEditCharms;
         private System.Windows.Forms.ToolStripButton toolStripButtonAddCharm;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewCharms;
         private System.Windows.Forms.ColumnHeader columnHeaderImage;
         private System.Windows.Forms.ColumnHeader columnHeaderName;
         private System.Windows.Forms.ImageList imageListCharms;

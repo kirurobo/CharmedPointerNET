@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("チャームポインター")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("三重大学病院")]
+[assembly: AssemblyCompany("三重大学")]
 [assembly: AssemblyProduct("Charmed Pointer")]
-[assembly: AssemblyCopyright("Copyright ©  2018 Mie Univ. Hosp.")]
+[assembly: AssemblyCopyright("Copyright ©  2018 Mie Univ.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

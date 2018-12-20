@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -88,6 +89,9 @@ namespace CharmedPointer
             timerForMainLoop.Start();
         }
 
+        /// <summary>
+        /// ウィンドウの拡張スタイルを指定（通常のFormで設定できない分）
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -109,6 +113,27 @@ namespace CharmedPointer
         public void End()
         {
 
+        }
+
+        /// <summary>
+        /// 画像を指定
+        /// </summary>
+        /// <param name="path"></param>
+        public void SetImage(string path)
+        {
+            if (File.Exists(path))
+            {
+                pictureBoxPointer.ImageLocation = path;
+            }
+        }
+
+        /// <summary>
+        /// 画像を指定
+        /// </summary>
+        /// <param name="image">新しい画像</param>
+        public void SetImage(Image image)
+        {
+            pictureBoxPointer.Image = image;
         }
 
         /// <summary>
@@ -245,6 +270,11 @@ namespace CharmedPointer
             SetPosition(pos);
         }
 
+        /// <summary>
+        /// 最初に起動した際は非表示にする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PointerForm_Shown(object sender, EventArgs e)
         {
             Hide();

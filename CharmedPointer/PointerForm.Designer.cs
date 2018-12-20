@@ -43,6 +43,7 @@
             // pictureBoxPointer
             // 
             this.pictureBoxPointer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxPointer.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxPointer.ErrorImage")));
             this.pictureBoxPointer.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPointer.Image")));
             this.pictureBoxPointer.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxPointer.Name = "pictureBoxPointer";
