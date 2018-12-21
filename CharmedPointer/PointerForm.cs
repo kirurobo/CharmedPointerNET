@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace CharmedPointer
 {
@@ -48,6 +49,8 @@ namespace CharmedPointer
         private long lastElapsedMilliseconds = 0;
         private long lastShownMilliseconds = 0;
 
+        private InterpolatedPictureBox pictureBoxPointer;
+
         /// <summary>
         /// 一定期間のマウス速度を保持するためのキュー
         /// </summary>
@@ -63,6 +66,12 @@ namespace CharmedPointer
 
         private void Initialize()
         {
+            pictureBoxPointer = new InterpolatedPictureBox();
+            pictureBoxPointer.Dock = DockStyle.Fill;
+            pictureBoxPointer.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxPointer.Interpolation = InterpolationMode.NearestNeighbor;
+            Controls.Add(pictureBoxPointer);
+
             Origin = new Point(Width / 2, Height / 2);
 
             // マウス速度を観察するキューの個数を、観察時間[s]とタイマー間隔[ms]から決める
@@ -278,6 +287,38 @@ namespace CharmedPointer
         private void PointerForm_Shown(object sender, EventArgs e)
         {
             Hide();
+        }
+    }
+
+    /// <summary>
+    /// 拡大縮小時の補間方法を指定できるPictureBox
+    /// http://whoopsidaisies.hatenablog.com/entry/2013/12/20/065945
+    /// </summary>
+    class InterpolatedPictureBox : PictureBox
+    {
+        private InterpolationMode interpolation = InterpolationMode.Default;
+
+        [DefaultValue(typeof(InterpolationMode), "NearestNeighbor"),
+        Description("The interpolation used to render the image.")]
+        public InterpolationMode Interpolation
+        {
+            get { return interpolation; }
+            set
+            {
+                if (value == InterpolationMode.Invalid)
+                    throw new ArgumentException("\"Invalid\" is not a valid value."); // (Duh!)
+
+                interpolation = value;
+                Invalidate(); // Image should be redrawn when a different interpolation is selected
+            }
+        }
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            pe.Graphics.InterpolationMode = interpolation;
+            pe.Graphics.PixelOffsetMode = PixelOffsetMode.Half;
+
+            base.OnPaint(pe);
         }
     }
 }

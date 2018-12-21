@@ -1,6 +1,9 @@
-﻿using System;
+﻿using CharmedPointer.Properties;
+using crdx.Settings;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,6 +16,8 @@ namespace CharmedPointer
     {
         PointerForm pointerForm = new PointerForm();
 
+        Charm defaultCharm;
+
         /// <summary>
         /// メニューから終了が選ばれたらtrueとなる
         /// </summary>
@@ -24,15 +29,23 @@ namespace CharmedPointer
 
             ResetCharmList();
 
+            LoadSettings();
+
+            defaultCharm = new Charm(Resources.DefaultCharmImage);
+
             toolStripMenuItemQuit.Click += ToolStripMenuItemQuit_Click;
             toolStripMenuItemShowSettings.Click += ToolStripMenuItemShowSettings_Click;
+
+            // 自分のバージョン番号を取得
+            labelVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             pointerForm.Show(this);
 
-            SelectCharm(0);
+            listViewCharms.Items[0].Selected = true;
+            SelectCharm();
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -92,6 +105,28 @@ namespace CharmedPointer
             index++;
         }
 
+        void LoadSettings()
+        {
+            numericUpDownVelocityToShow.Value = (Decimal)Settings.Default.VelocityThresholdToShow;
+            numericUpDownVelocityToHide.Value = (Decimal)Settings.Default.VelocityThresholdToHide;
+            numericUpDownDurationToHide.Value = (Decimal)Settings.Default.DurationToHide;
+
+            checkBoxShowSettingsOnStart.Checked = Settings.Default.ShowFormOnStartup;
+            checkBoxUseNotifyIcon.Checked = Settings.Default.UseNotifyIcon;
+        }
+
+        void SaveSettings()
+        {
+            Settings.Default.VelocityThresholdToShow = (int)numericUpDownVelocityToShow.Value;
+            Settings.Default.VelocityThresholdToHide = (int)numericUpDownVelocityToHide.Value;
+            Settings.Default.DurationToHide = (double)numericUpDownDurationToHide.Value;
+
+            Settings.Default.ShowFormOnStartup = checkBoxShowSettingsOnStart.Checked;
+            Settings.Default.UseNotifyIcon = checkBoxUseNotifyIcon.Checked;
+
+            Settings.Default.Save();
+        }
+
         private void ToolStripMenuItemShowSettings_Click(object sender, EventArgs e)
         {
             // 設定フォームを表示
@@ -135,10 +170,8 @@ namespace CharmedPointer
         /// <param name="e"></param>
         private void listViewCharms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var indices = listViewCharms.SelectedIndices;
-            if (indices.Count != 1) return;
 
-            SelectCharm(indices[0]);
+            SelectCharm();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -149,12 +182,32 @@ namespace CharmedPointer
                 Hide();
                 e.Cancel = true;
             }
+
+            // 終了直前に設定を保存
+            SaveSettings();
         }
 
-        void SelectCharm(int index)
+        Charm GetSelectedCharm()
         {
-            var item = (ListViewCharmItem)listViewCharms.Items[index];
-            var charm = item.Charm;
+            var selection = listViewCharms.SelectedItems;
+            if (selection.Count != 1)
+            {
+                //return null;
+                return defaultCharm;
+
+                //// 選択状態が異常ならば、最初のチャームを選択しなおす
+                //listViewCharms.SelectedItems.Clear();
+                //listViewCharms.Items[0].Selected = true;
+                //return ((ListViewCharmItem)listViewCharms.Items[0]).Charm;
+            }
+
+            return ((ListViewCharmItem)selection[0]).Charm;
+        }
+
+        void SelectCharm()
+        {
+            var charm = GetSelectedCharm();
+            if (charm == null) return;
             var image = charm.Image;
 
             double opacity = (double)(charm.Opacity) / 100.0;
@@ -170,12 +223,13 @@ namespace CharmedPointer
             pointerForm.SetImage(image);
             pointerForm.Width = charm.Size.Width;
             pointerForm.Height = charm.Size.Height;
+
+            ValidateCharmParameters();
         }
 
-        void ApplyCharmSettings(int index)
+        void ApplyCharmSettings()
         {
-            var item = (ListViewCharmItem)listViewCharms.Items[index];
-            var charm = item.Charm;
+            var charm = GetSelectedCharm();
 
             charm.Opacity = (int)(numericUpDownOpacity.Value);
             charm.Size.Width = (int)numericUpDownCharmWidth.Value;
@@ -183,23 +237,74 @@ namespace CharmedPointer
             charm.Origin.X = (int)numericUpDownCharmOriginX.Value;
             charm.Origin.Y = (int)numericUpDownCharmOriginY.Value;
 
-            SelectCharm(index);
+            SelectCharm();
         }
 
         private void buttonCharmEditOk_Click(object sender, EventArgs e)
         {
-            var indices = listViewCharms.SelectedIndices;
-            if (indices.Count != 1) return;
-
-            ApplyCharmSettings(indices[0]);
+            ApplyCharmSettings();
         }
 
         private void buttonCharmEditCancel_Click(object sender, EventArgs e)
         {
-            var indices = listViewCharms.SelectedIndices;
-            if (indices.Count != 1) return;
+            SelectCharm();
+        }
 
-            SelectCharm(indices[0]);
+        private void buttonCharmSizeReset_Click(object sender, EventArgs e)
+        {
+            Charm charm = GetSelectedCharm();
+            numericUpDownCharmWidth.Value = charm.Image.Width;
+            numericUpDownCharmHeight.Value = charm.Image.Height;
+
+            InvalidateCharmParameters();
+        }
+
+        private void buttonCharmOriginReset_Click(object sender, EventArgs e)
+        {
+            Charm charm = GetSelectedCharm();
+            numericUpDownCharmOriginX.Value = numericUpDownCharmWidth.Value / 2;
+            numericUpDownCharmOriginY.Value = numericUpDownCharmHeight.Value / 2;
+
+            InvalidateCharmParameters();
+        }
+
+        void InvalidateCharmParameters()
+        {
+            // OK、キャンセルボタンを押せるようにする
+            buttonCharmEditOk.Enabled = true;
+            buttonCharmEditCancel.Enabled = true;
+        }
+
+        void ValidateCharmParameters()
+        {
+            // OK、キャンセルボタンを無効にする
+            buttonCharmEditOk.Enabled = false;
+            buttonCharmEditCancel.Enabled = false;
+        }
+
+        private void numericUpDownCharmWidth_ValueChanged(object sender, EventArgs e)
+        {
+            if (checkBoxCharmSizeLink.Checked)
+            {
+                Charm charm = GetSelectedCharm();
+                numericUpDownCharmHeight.Value = numericUpDownCharmWidth.Value * charm.Size.Height / charm.Size.Width;
+            }
+            InvalidateCharmParameters();
+        }
+
+        private void numericUpDownCharmHeight_ValueChanged(object sender, EventArgs e)
+        {
+            if (checkBoxCharmSizeLink.Checked)
+            {
+                Charm charm = GetSelectedCharm();
+                numericUpDownCharmWidth.Value = numericUpDownCharmHeight.Value * charm.Size.Width / charm.Size.Height;
+            }
+            InvalidateCharmParameters();
+        }
+
+        private void numericUpDownOpacity_ValueChanged(object sender, EventArgs e)
+        {
+            InvalidateCharmParameters();
         }
     }
 }

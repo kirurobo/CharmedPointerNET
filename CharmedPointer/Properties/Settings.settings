@@ -1,7 +1,24 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CharmedPointer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SettingsVersion" Description="設定ファイルのバージョン" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UseNotifyIcon" Description="タスクトレイに常駐するか" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowFormOnStartup" Description="起動直後に設定フォームを表示するか" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="VelocityThresholdToShow" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="VelocityThresholdToHide" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="DurationToHide" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

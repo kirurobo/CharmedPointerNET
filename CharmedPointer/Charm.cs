@@ -12,11 +12,26 @@ namespace CharmedPointer
     /// </summary>
     public class Charm
     {
+        public Image Image;
         public Size Size;
         public Point Origin;
         public int Opacity;
-        public int ImageIndex;
-        public Image Image;
+
+        public Charm()
+        {
+            Image = null;
+            Size = new Size();
+            Origin = new Point();
+            Opacity = 100;
+        }
+
+        public Charm(Image image)
+        {
+            Image = image;
+            Size = new Size(image.Width, image.Height);
+            Origin = new Point(Size.Width / 2, Size.Height / 2);
+            Opacity = 100;
+        }
     }
 
     public class ListViewCharmItem : ListViewItem
@@ -25,15 +40,10 @@ namespace CharmedPointer
 
         public ListViewCharmItem(string name, Image image, int imageIndex)
         {
-            Charm = new Charm();
+            Charm = new Charm(image);
 
             Text = name;
             ImageIndex = imageIndex;
-            Charm.Image = image;
-            Charm.ImageIndex = imageIndex;
-            Charm.Size = new Size(image.Width, image.Height);
-            Charm.Origin = new Point(Charm.Size.Width / 2, Charm.Size.Height / 2);
-            Charm.Opacity = 100;
         }
     }
 

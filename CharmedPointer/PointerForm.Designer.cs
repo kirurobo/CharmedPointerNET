@@ -29,28 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PointerForm));
             this.timerForMainLoop = new System.Windows.Forms.Timer(this.components);
-            this.pictureBoxPointer = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPointer)).BeginInit();
             this.SuspendLayout();
             // 
             // timerForMainLoop
             // 
             this.timerForMainLoop.Interval = 16;
             this.timerForMainLoop.Tick += new System.EventHandler(this.timerForMainLoop_Tick);
-            // 
-            // pictureBoxPointer
-            // 
-            this.pictureBoxPointer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxPointer.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxPointer.ErrorImage")));
-            this.pictureBoxPointer.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPointer.Image")));
-            this.pictureBoxPointer.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxPointer.Name = "pictureBoxPointer";
-            this.pictureBoxPointer.Size = new System.Drawing.Size(128, 128);
-            this.pictureBoxPointer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPointer.TabIndex = 0;
-            this.pictureBoxPointer.TabStop = false;
             // 
             // PointerForm
             // 
@@ -59,7 +44,6 @@
             this.BackColor = System.Drawing.Color.Magenta;
             this.ClientSize = new System.Drawing.Size(128, 128);
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBoxPointer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PointerForm";
             this.ShowIcon = false;
@@ -69,7 +53,6 @@
             this.TransparencyKey = System.Drawing.Color.Magenta;
             this.Load += new System.EventHandler(this.PointerForm_Load);
             this.Shown += new System.EventHandler(this.PointerForm_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPointer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -77,6 +60,5 @@
         #endregion
 
         private System.Windows.Forms.Timer timerForMainLoop;
-        private System.Windows.Forms.PictureBox pictureBoxPointer;
     }
 }

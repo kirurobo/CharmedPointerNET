@@ -22,5 +22,101 @@ namespace CharmedPointer.Properties {
                 return defaultInstance;
             }
         }
+        
+        /// <summary>
+        /// 設定ファイルのバージョン
+        /// </summary>
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(crdx.Settings.PortableSettingsProvider))]
+        [global::System.Configuration.SettingsDescriptionAttribute("設定ファイルのバージョン")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double SettingsVersion {
+            get {
+                return ((double)(this["SettingsVersion"]));
+            }
+            set {
+                this["SettingsVersion"] = value;
+            }
+        }
+        
+        /// <summary>
+        /// タスクトレイに常駐するか
+        /// </summary>
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(crdx.Settings.PortableSettingsProvider))]
+        [global::System.Configuration.SettingsDescriptionAttribute("タスクトレイに常駐するか")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool UseNotifyIcon {
+            get {
+                return ((bool)(this["UseNotifyIcon"]));
+            }
+            set {
+                this["UseNotifyIcon"] = value;
+            }
+        }
+        
+        /// <summary>
+        /// 起動直後に設定フォームを表示するか
+        /// </summary>
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(crdx.Settings.PortableSettingsProvider))]
+        [global::System.Configuration.SettingsDescriptionAttribute("起動直後に設定フォームを表示するか")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool ShowFormOnStartup {
+            get {
+                return ((bool)(this["ShowFormOnStartup"]));
+            }
+            set {
+                this["ShowFormOnStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(crdx.Settings.PortableSettingsProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int VelocityThresholdToShow {
+            get {
+                return ((int)(this["VelocityThresholdToShow"]));
+            }
+            set {
+                this["VelocityThresholdToShow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(crdx.Settings.PortableSettingsProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int VelocityThresholdToHide {
+            get {
+                return ((int)(this["VelocityThresholdToHide"]));
+            }
+            set {
+                this["VelocityThresholdToHide"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(crdx.Settings.PortableSettingsProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double DurationToHide {
+            get {
+                return ((double)(this["DurationToHide"]));
+            }
+            set {
+                this["DurationToHide"] = value;
+            }
+        }
     }
 }
