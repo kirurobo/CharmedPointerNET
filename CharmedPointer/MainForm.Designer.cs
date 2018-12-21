@@ -60,8 +60,6 @@
             this.imageListCharms = new System.Windows.Forms.ImageList(this.components);
             this.buttonCharmEditOk = new System.Windows.Forms.Button();
             this.buttonCharmEditCancel = new System.Windows.Forms.Button();
-            this.textBoxCharmFile = new System.Windows.Forms.TextBox();
-            this.buttonCharmFileOpen = new System.Windows.Forms.Button();
             this.buttonCharmOriginReset = new System.Windows.Forms.Button();
             this.buttonCharmSizeReset = new System.Windows.Forms.Button();
             this.checkBoxCharmOriginLink = new System.Windows.Forms.CheckBox();
@@ -71,7 +69,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDownCharmHeight = new System.Windows.Forms.NumericUpDown();
@@ -84,6 +81,7 @@
             this.toolStripMenuItemShowSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorBeforeQuit = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialogAddCharm = new System.Windows.Forms.OpenFileDialog();
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -148,9 +146,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(6, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(216, 36);
+            this.label14.Size = new System.Drawing.Size(216, 12);
             this.label14.TabIndex = 2;
-            this.label14.Text = "マウスを素早く動かすと目立たせるソフトです。\r\n\r\n制作：三重大学";
+            this.label14.Text = "マウスを素早く動かすと目立たせるソフトです。\r\n";
             // 
             // groupBox2
             // 
@@ -369,8 +367,6 @@
             // 
             this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmEditOk);
             this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmEditCancel);
-            this.splitContainerCharms.Panel2.Controls.Add(this.textBoxCharmFile);
-            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmFileOpen);
             this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmOriginReset);
             this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmSizeReset);
             this.splitContainerCharms.Panel2.Controls.Add(this.checkBoxCharmOriginLink);
@@ -380,7 +376,6 @@
             this.splitContainerCharms.Panel2.Controls.Add(this.label11);
             this.splitContainerCharms.Panel2.Controls.Add(this.label8);
             this.splitContainerCharms.Panel2.Controls.Add(this.label10);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label15);
             this.splitContainerCharms.Panel2.Controls.Add(this.label13);
             this.splitContainerCharms.Panel2.Controls.Add(this.label7);
             this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmHeight);
@@ -481,6 +476,7 @@
             this.buttonCharmEditOk.TabIndex = 8;
             this.buttonCharmEditOk.Text = "OK";
             this.buttonCharmEditOk.UseVisualStyleBackColor = true;
+            this.buttonCharmEditOk.Click += new System.EventHandler(this.buttonCharmEditOk_Click);
             // 
             // buttonCharmEditCancel
             // 
@@ -490,23 +486,7 @@
             this.buttonCharmEditCancel.TabIndex = 8;
             this.buttonCharmEditCancel.Text = "キャンセル";
             this.buttonCharmEditCancel.UseVisualStyleBackColor = true;
-            // 
-            // textBoxCharmFile
-            // 
-            this.textBoxCharmFile.Location = new System.Drawing.Point(54, 99);
-            this.textBoxCharmFile.Name = "textBoxCharmFile";
-            this.textBoxCharmFile.Size = new System.Drawing.Size(161, 19);
-            this.textBoxCharmFile.TabIndex = 7;
-            // 
-            // buttonCharmFileOpen
-            // 
-            this.buttonCharmFileOpen.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonCharmFileOpen.Location = new System.Drawing.Point(215, 99);
-            this.buttonCharmFileOpen.Name = "buttonCharmFileOpen";
-            this.buttonCharmFileOpen.Size = new System.Drawing.Size(20, 20);
-            this.buttonCharmFileOpen.TabIndex = 6;
-            this.buttonCharmFileOpen.Text = "...";
-            this.buttonCharmFileOpen.UseVisualStyleBackColor = true;
+            this.buttonCharmEditCancel.Click += new System.EventHandler(this.buttonCharmEditCancel_Click);
             // 
             // buttonCharmOriginReset
             // 
@@ -596,15 +576,6 @@
             this.label10.Size = new System.Drawing.Size(58, 12);
             this.label10.TabIndex = 4;
             this.label10.Text = "画像サイズ";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 103);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(29, 12);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "画像";
             // 
             // label13
             // 
@@ -779,6 +750,12 @@
             this.toolStripMenuItemQuit.Size = new System.Drawing.Size(110, 22);
             this.toolStripMenuItemQuit.Text = "終了";
             // 
+            // openFileDialogAddCharm
+            // 
+            this.openFileDialogAddCharm.Filter = "画像|*.png,*.gif|すべてのファイル|*.*";
+            this.openFileDialogAddCharm.Multiselect = true;
+            this.openFileDialogAddCharm.Title = "画像の追加";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -788,7 +765,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "チャームポインター 設定";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.tabControlMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -870,11 +849,9 @@
         private System.Windows.Forms.CheckBox checkBoxUseNotifyIcon;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBoxCharmFile;
-        private System.Windows.Forms.Button buttonCharmFileOpen;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button buttonCharmEditCancel;
         private System.Windows.Forms.Button buttonCharmEditOk;
+        private System.Windows.Forms.OpenFileDialog openFileDialogAddCharm;
     }
 }
 

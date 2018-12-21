@@ -48,7 +48,7 @@
             this.pictureBoxPointer.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxPointer.Name = "pictureBoxPointer";
             this.pictureBoxPointer.Size = new System.Drawing.Size(128, 128);
-            this.pictureBoxPointer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPointer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPointer.TabIndex = 0;
             this.pictureBoxPointer.TabStop = false;
             // 

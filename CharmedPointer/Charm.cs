@@ -16,6 +16,7 @@ namespace CharmedPointer
         public Point Origin;
         public int Opacity;
         public int ImageIndex;
+        public Image Image;
     }
 
     public class ListViewCharmItem : ListViewItem
@@ -28,6 +29,7 @@ namespace CharmedPointer
 
             Text = name;
             ImageIndex = imageIndex;
+            Charm.Image = image;
             Charm.ImageIndex = imageIndex;
             Charm.Size = new Size(image.Width, image.Height);
             Charm.Origin = new Point(Charm.Size.Width / 2, Charm.Size.Height / 2);
