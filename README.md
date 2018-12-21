@@ -1,4 +1,4 @@
-# CharmedPointerNET
+# CharmedPointer .NET
 プレゼン時にカーソルを目立たせるアプリ
 
 ## 背景
