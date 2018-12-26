@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
@@ -55,6 +56,15 @@ namespace CharmedPointer
         /// 一定期間のマウス速度を保持するためのキュー
         /// </summary>
         private Queue<double> velocities;
+
+
+        /// <summary>
+        /// カーソルを表示/非表示
+        /// </summary>
+        /// <param name="bShow"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        static extern int ShowCursor(bool bShow);
 
 
         public PointerForm()
@@ -116,12 +126,16 @@ namespace CharmedPointer
 
         public void Begin()
         {
-
+            Show();
+            //ShowCursor(false);
+            isVisible = true;
         }
 
         public void End()
         {
-
+            Hide();
+            //ShowCursor(true);
+            isVisible = false;
         }
 
         /// <summary>
@@ -179,16 +193,14 @@ namespace CharmedPointer
             {
                 if (!isVisible)
                 {
-                    Show();
-                    isVisible = true;
+                    Begin();
                 }
             }
             else
             {
                 if (isVisible)
                 {
-                    Hide();
-                    isVisible = false;
+                    End();
                 }
             }
         }
@@ -200,7 +212,7 @@ namespace CharmedPointer
         {
             isVisible = true;
             lastShownMilliseconds = stopwatch.ElapsedMilliseconds;
-            Show();
+            Begin();
         }
 
         /// <summary>

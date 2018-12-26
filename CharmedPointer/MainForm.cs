@@ -23,6 +23,7 @@ namespace CharmedPointer
         /// </summary>
         bool isExiting = false;
 
+
         public MainForm()
         {
             InitializeComponent();
