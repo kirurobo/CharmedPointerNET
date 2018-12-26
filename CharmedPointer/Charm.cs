@@ -15,6 +15,7 @@ namespace CharmedPointer
         public Image Image;
         public Size Size;
         public Point Origin;
+        public double Scale;
         public int Opacity;
 
         public Charm()
@@ -23,6 +24,7 @@ namespace CharmedPointer
             Size = new Size();
             Origin = new Point();
             Opacity = 100;
+            Scale = 1.0;
         }
 
         public Charm(Image image)
@@ -31,6 +33,7 @@ namespace CharmedPointer
             Size = new Size(image.Width, image.Height);
             Origin = new Point(Size.Width / 2, Size.Height / 2);
             Opacity = 100;
+            Scale = 1.0;
         }
     }
 

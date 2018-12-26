@@ -52,9 +52,10 @@
             this.columnHeaderImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageListCharms = new System.Windows.Forms.ImageList(this.components);
-            this.buttonCharmEditOk = new System.Windows.Forms.Button();
-            this.buttonCharmEditCancel = new System.Windows.Forms.Button();
+            this.trackBarCharmScale = new System.Windows.Forms.TrackBar();
+            this.buttonCharmEditReset = new System.Windows.Forms.Button();
             this.buttonCharmOriginReset = new System.Windows.Forms.Button();
+            this.buttonCharmScaleReset = new System.Windows.Forms.Button();
             this.buttonCharmSizeReset = new System.Windows.Forms.Button();
             this.checkBoxCharmOriginLink = new System.Windows.Forms.CheckBox();
             this.checkBoxCharmSizeLink = new System.Windows.Forms.CheckBox();
@@ -62,6 +63,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -73,6 +75,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.toolStripButtonAddCharm = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRemoveCharm = new System.Windows.Forms.ToolStripButton();
@@ -84,8 +88,6 @@
             this.toolStripSeparatorBeforeQuit = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogAddCharm = new System.Windows.Forms.OpenFileDialog();
-            this.label15 = new System.Windows.Forms.Label();
-            this.labelVersion = new System.Windows.Forms.Label();
             this.toolTipMain = new System.Windows.Forms.ToolTip(this.components);
             this.tabControlMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -99,6 +101,7 @@
             this.splitContainerCharms.Panel1.SuspendLayout();
             this.splitContainerCharms.Panel2.SuspendLayout();
             this.splitContainerCharms.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCharmScale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmWidth)).BeginInit();
@@ -118,7 +121,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(0, 0);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(464, 241);
+            this.tabControlMain.Size = new System.Drawing.Size(464, 281);
             this.tabControlMain.TabIndex = 0;
             // 
             // tabPage1
@@ -128,7 +131,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(456, 215);
+            this.tabPage1.Size = new System.Drawing.Size(456, 255);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "全般";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -323,7 +326,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(456, 215);
+            this.tabPage2.Size = new System.Drawing.Size(456, 255);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "カーソル変更";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -341,9 +344,11 @@
             // 
             // splitContainerCharms.Panel2
             // 
-            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmEditOk);
-            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmEditCancel);
+            this.splitContainerCharms.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerCharms.Panel2.Controls.Add(this.trackBarCharmScale);
+            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmEditReset);
             this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmOriginReset);
+            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmScaleReset);
             this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmSizeReset);
             this.splitContainerCharms.Panel2.Controls.Add(this.checkBoxCharmOriginLink);
             this.splitContainerCharms.Panel2.Controls.Add(this.checkBoxCharmSizeLink);
@@ -351,6 +356,7 @@
             this.splitContainerCharms.Panel2.Controls.Add(this.label9);
             this.splitContainerCharms.Panel2.Controls.Add(this.label11);
             this.splitContainerCharms.Panel2.Controls.Add(this.label8);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label16);
             this.splitContainerCharms.Panel2.Controls.Add(this.label10);
             this.splitContainerCharms.Panel2.Controls.Add(this.label13);
             this.splitContainerCharms.Panel2.Controls.Add(this.label7);
@@ -359,7 +365,7 @@
             this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmWidth);
             this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownOpacity);
             this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmOriginX);
-            this.splitContainerCharms.Size = new System.Drawing.Size(450, 209);
+            this.splitContainerCharms.Size = new System.Drawing.Size(450, 249);
             this.splitContainerCharms.SplitterDistance = 135;
             this.splitContainerCharms.TabIndex = 1;
             // 
@@ -385,7 +391,7 @@
             this.listViewCharms.Location = new System.Drawing.Point(0, 0);
             this.listViewCharms.MultiSelect = false;
             this.listViewCharms.Name = "listViewCharms";
-            this.listViewCharms.Size = new System.Drawing.Size(135, 209);
+            this.listViewCharms.Size = new System.Drawing.Size(135, 249);
             this.listViewCharms.SmallImageList = this.imageListCharms;
             this.listViewCharms.TabIndex = 0;
             this.listViewCharms.UseCompatibleStateImageBehavior = false;
@@ -409,47 +415,65 @@
             this.imageListCharms.Images.SetKeyName(2, "YellowCircle.gif");
             this.imageListCharms.Images.SetKeyName(3, "YellowFilledCircle.gif");
             // 
-            // buttonCharmEditOk
+            // trackBarCharmScale
             // 
-            this.buttonCharmEditOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCharmEditOk.Location = new System.Drawing.Point(99, 175);
-            this.buttonCharmEditOk.Name = "buttonCharmEditOk";
-            this.buttonCharmEditOk.Size = new System.Drawing.Size(75, 29);
-            this.buttonCharmEditOk.TabIndex = 12;
-            this.buttonCharmEditOk.Text = "OK";
-            this.buttonCharmEditOk.UseVisualStyleBackColor = true;
-            this.buttonCharmEditOk.Click += new System.EventHandler(this.buttonCharmEditOk_Click);
+            this.trackBarCharmScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarCharmScale.LargeChange = 10;
+            this.trackBarCharmScale.Location = new System.Drawing.Point(82, 3);
+            this.trackBarCharmScale.Maximum = 49;
+            this.trackBarCharmScale.Minimum = -50;
+            this.trackBarCharmScale.Name = "trackBarCharmScale";
+            this.trackBarCharmScale.Size = new System.Drawing.Size(204, 45);
+            this.trackBarCharmScale.SmallChange = 5;
+            this.trackBarCharmScale.TabIndex = 1;
+            this.trackBarCharmScale.TickFrequency = 10;
+            this.toolTipMain.SetToolTip(this.trackBarCharmScale, "100%");
+            this.trackBarCharmScale.Scroll += new System.EventHandler(this.trackBarCharmScale_Scroll);
             // 
-            // buttonCharmEditCancel
+            // buttonCharmEditReset
             // 
-            this.buttonCharmEditCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCharmEditCancel.Location = new System.Drawing.Point(190, 175);
-            this.buttonCharmEditCancel.Name = "buttonCharmEditCancel";
-            this.buttonCharmEditCancel.Size = new System.Drawing.Size(75, 29);
-            this.buttonCharmEditCancel.TabIndex = 13;
-            this.buttonCharmEditCancel.Text = "キャンセル";
-            this.buttonCharmEditCancel.UseVisualStyleBackColor = true;
-            this.buttonCharmEditCancel.Click += new System.EventHandler(this.buttonCharmEditCancel_Click);
+            this.buttonCharmEditReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCharmEditReset.Location = new System.Drawing.Point(224, 215);
+            this.buttonCharmEditReset.Name = "buttonCharmEditReset";
+            this.buttonCharmEditReset.Size = new System.Drawing.Size(75, 29);
+            this.buttonCharmEditReset.TabIndex = 15;
+            this.buttonCharmEditReset.Text = "リセット";
+            this.buttonCharmEditReset.UseVisualStyleBackColor = true;
+            this.buttonCharmEditReset.Visible = false;
+            this.buttonCharmEditReset.Click += new System.EventHandler(this.buttonCharmEditReset_Click);
             // 
             // buttonCharmOriginReset
             // 
             this.buttonCharmOriginReset.Font = new System.Drawing.Font("Wingdings 3", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonCharmOriginReset.Location = new System.Drawing.Point(229, 62);
+            this.buttonCharmOriginReset.Location = new System.Drawing.Point(224, 104);
             this.buttonCharmOriginReset.Name = "buttonCharmOriginReset";
             this.buttonCharmOriginReset.Size = new System.Drawing.Size(20, 20);
-            this.buttonCharmOriginReset.TabIndex = 17;
+            this.buttonCharmOriginReset.TabIndex = 19;
             this.buttonCharmOriginReset.Text = "Q";
             this.toolTipMain.SetToolTip(this.buttonCharmOriginReset, "画像の中心になるようリセット");
             this.buttonCharmOriginReset.UseVisualStyleBackColor = true;
             this.buttonCharmOriginReset.Click += new System.EventHandler(this.buttonCharmOriginReset_Click);
             // 
+            // buttonCharmScaleReset
+            // 
+            this.buttonCharmScaleReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCharmScaleReset.Font = new System.Drawing.Font("Wingdings 3", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonCharmScaleReset.Location = new System.Drawing.Point(288, 3);
+            this.buttonCharmScaleReset.Name = "buttonCharmScaleReset";
+            this.buttonCharmScaleReset.Size = new System.Drawing.Size(20, 20);
+            this.buttonCharmScaleReset.TabIndex = 18;
+            this.buttonCharmScaleReset.Text = "Q";
+            this.buttonCharmScaleReset.UseVisualStyleBackColor = true;
+            this.buttonCharmScaleReset.Click += new System.EventHandler(this.buttonCharmScaleReset_Click);
+            // 
             // buttonCharmSizeReset
             // 
             this.buttonCharmSizeReset.Font = new System.Drawing.Font("Wingdings 3", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonCharmSizeReset.Location = new System.Drawing.Point(229, 11);
+            this.buttonCharmSizeReset.Location = new System.Drawing.Point(224, 53);
             this.buttonCharmSizeReset.Name = "buttonCharmSizeReset";
             this.buttonCharmSizeReset.Size = new System.Drawing.Size(20, 20);
-            this.buttonCharmSizeReset.TabIndex = 16;
+            this.buttonCharmSizeReset.TabIndex = 18;
             this.buttonCharmSizeReset.Text = "Q";
             this.toolTipMain.SetToolTip(this.buttonCharmSizeReset, "元のサイズにリセット");
             this.buttonCharmSizeReset.UseVisualStyleBackColor = true;
@@ -460,10 +484,10 @@
             this.checkBoxCharmOriginLink.Checked = true;
             this.checkBoxCharmOriginLink.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCharmOriginLink.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxCharmOriginLink.Location = new System.Drawing.Point(134, 82);
+            this.checkBoxCharmOriginLink.Location = new System.Drawing.Point(129, 124);
             this.checkBoxCharmOriginLink.Name = "checkBoxCharmOriginLink";
             this.checkBoxCharmOriginLink.Size = new System.Drawing.Size(75, 20);
-            this.checkBoxCharmOriginLink.TabIndex = 15;
+            this.checkBoxCharmOriginLink.TabIndex = 17;
             this.checkBoxCharmOriginLink.Text = "比率固定";
             this.checkBoxCharmOriginLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTipMain.SetToolTip(this.checkBoxCharmOriginLink, "縦横の比率を維持します");
@@ -474,10 +498,10 @@
             this.checkBoxCharmSizeLink.Checked = true;
             this.checkBoxCharmSizeLink.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCharmSizeLink.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxCharmSizeLink.Location = new System.Drawing.Point(134, 32);
+            this.checkBoxCharmSizeLink.Location = new System.Drawing.Point(129, 74);
             this.checkBoxCharmSizeLink.Name = "checkBoxCharmSizeLink";
             this.checkBoxCharmSizeLink.Size = new System.Drawing.Size(75, 20);
-            this.checkBoxCharmSizeLink.TabIndex = 14;
+            this.checkBoxCharmSizeLink.TabIndex = 16;
             this.checkBoxCharmSizeLink.Text = "比率固定";
             this.checkBoxCharmSizeLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTipMain.SetToolTip(this.checkBoxCharmSizeLink, "縦横の比率を維持します");
@@ -486,64 +510,73 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(159, 13);
+            this.label12.Location = new System.Drawing.Point(154, 55);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(12, 12);
-            this.label12.TabIndex = 3;
+            this.label12.TabIndex = 5;
             this.label12.Text = "Y";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(159, 64);
+            this.label9.Location = new System.Drawing.Point(154, 106);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(12, 12);
-            this.label9.TabIndex = 8;
+            this.label9.TabIndex = 10;
             this.label9.Text = "Y";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(85, 13);
+            this.label11.Location = new System.Drawing.Point(80, 55);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(12, 12);
-            this.label11.TabIndex = 1;
+            this.label11.TabIndex = 3;
             this.label11.Text = "X";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(85, 64);
+            this.label8.Location = new System.Drawing.Point(80, 106);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(12, 12);
-            this.label8.TabIndex = 6;
+            this.label8.TabIndex = 8;
             this.label8.Text = "X";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "表示倍率";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 13);
+            this.label10.Location = new System.Drawing.Point(3, 55);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 12);
-            this.label10.TabIndex = 0;
+            this.label10.TabIndex = 2;
             this.label10.Text = "画像サイズ";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 121);
+            this.label13.Location = new System.Drawing.Point(3, 163);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 12);
-            this.label13.TabIndex = 10;
+            this.label13.TabIndex = 12;
             this.label13.Text = "不透明度";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 64);
+            this.label7.Location = new System.Drawing.Point(3, 106);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 12);
-            this.label7.TabIndex = 5;
+            this.label7.TabIndex = 7;
             this.label7.Text = "カーソル原点";
             // 
             // numericUpDownCharmHeight
@@ -553,7 +586,7 @@
             0,
             0,
             0});
-            this.numericUpDownCharmHeight.Location = new System.Drawing.Point(173, 12);
+            this.numericUpDownCharmHeight.Location = new System.Drawing.Point(168, 54);
             this.numericUpDownCharmHeight.Maximum = new decimal(new int[] {
             640,
             0,
@@ -566,7 +599,7 @@
             0});
             this.numericUpDownCharmHeight.Name = "numericUpDownCharmHeight";
             this.numericUpDownCharmHeight.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownCharmHeight.TabIndex = 4;
+            this.numericUpDownCharmHeight.TabIndex = 6;
             this.numericUpDownCharmHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownCharmHeight.Value = new decimal(new int[] {
             100,
@@ -582,7 +615,7 @@
             0,
             0,
             0});
-            this.numericUpDownCharmOriginY.Location = new System.Drawing.Point(173, 63);
+            this.numericUpDownCharmOriginY.Location = new System.Drawing.Point(168, 105);
             this.numericUpDownCharmOriginY.Maximum = new decimal(new int[] {
             640,
             0,
@@ -590,7 +623,7 @@
             0});
             this.numericUpDownCharmOriginY.Name = "numericUpDownCharmOriginY";
             this.numericUpDownCharmOriginY.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownCharmOriginY.TabIndex = 9;
+            this.numericUpDownCharmOriginY.TabIndex = 11;
             this.numericUpDownCharmOriginY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownCharmOriginY.Value = new decimal(new int[] {
             100,
@@ -605,7 +638,7 @@
             0,
             0,
             0});
-            this.numericUpDownCharmWidth.Location = new System.Drawing.Point(99, 11);
+            this.numericUpDownCharmWidth.Location = new System.Drawing.Point(94, 53);
             this.numericUpDownCharmWidth.Maximum = new decimal(new int[] {
             640,
             0,
@@ -618,7 +651,7 @@
             0});
             this.numericUpDownCharmWidth.Name = "numericUpDownCharmWidth";
             this.numericUpDownCharmWidth.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownCharmWidth.TabIndex = 2;
+            this.numericUpDownCharmWidth.TabIndex = 4;
             this.numericUpDownCharmWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownCharmWidth.Value = new decimal(new int[] {
             100,
@@ -634,10 +667,10 @@
             0,
             0,
             0});
-            this.numericUpDownOpacity.Location = new System.Drawing.Point(99, 119);
+            this.numericUpDownOpacity.Location = new System.Drawing.Point(94, 161);
             this.numericUpDownOpacity.Name = "numericUpDownOpacity";
             this.numericUpDownOpacity.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownOpacity.TabIndex = 11;
+            this.numericUpDownOpacity.TabIndex = 13;
             this.numericUpDownOpacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.toolTipMain.SetToolTip(this.numericUpDownOpacity, "0で完全に透明医、100で不透明です");
             this.numericUpDownOpacity.Value = new decimal(new int[] {
@@ -654,7 +687,7 @@
             0,
             0,
             0});
-            this.numericUpDownCharmOriginX.Location = new System.Drawing.Point(99, 62);
+            this.numericUpDownCharmOriginX.Location = new System.Drawing.Point(94, 104);
             this.numericUpDownCharmOriginX.Maximum = new decimal(new int[] {
             640,
             0,
@@ -662,7 +695,7 @@
             0});
             this.numericUpDownCharmOriginX.Name = "numericUpDownCharmOriginX";
             this.numericUpDownCharmOriginX.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownCharmOriginX.TabIndex = 7;
+            this.numericUpDownCharmOriginX.TabIndex = 9;
             this.numericUpDownCharmOriginX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownCharmOriginX.Value = new decimal(new int[] {
             100,
@@ -677,7 +710,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(456, 215);
+            this.tabPage3.Size = new System.Drawing.Size(456, 255);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "情報";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -706,6 +739,24 @@
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "情報";
+            // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Location = new System.Drawing.Point(64, 35);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(35, 12);
+            this.labelVersion.TabIndex = 2;
+            this.labelVersion.Text = "0.0.0.0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(7, 34);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(50, 12);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "バージョン";
             // 
             // label14
             // 
@@ -790,29 +841,11 @@
             this.openFileDialogAddCharm.Multiselect = true;
             this.openFileDialogAddCharm.Title = "画像の追加";
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(7, 34);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(50, 12);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "バージョン";
-            // 
-            // labelVersion
-            // 
-            this.labelVersion.AutoSize = true;
-            this.labelVersion.Location = new System.Drawing.Point(64, 35);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(35, 12);
-            this.labelVersion.TabIndex = 2;
-            this.labelVersion.Text = "0.0.0.0";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 241);
+            this.ClientSize = new System.Drawing.Size(464, 281);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -836,6 +869,7 @@
             this.splitContainerCharms.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCharms)).EndInit();
             this.splitContainerCharms.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCharmScale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmWidth)).EndInit();
@@ -898,8 +932,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox checkBoxShowSettingsOnStart;
         private System.Windows.Forms.CheckBox checkBoxUseNotifyIcon;
-        private System.Windows.Forms.Button buttonCharmEditCancel;
-        private System.Windows.Forms.Button buttonCharmEditOk;
+        private System.Windows.Forms.Button buttonCharmEditReset;
         private System.Windows.Forms.OpenFileDialog openFileDialogAddCharm;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.RichTextBox richTextBoxLicense;
@@ -908,6 +941,9 @@
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ToolTip toolTipMain;
+        private System.Windows.Forms.TrackBar trackBarCharmScale;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button buttonCharmScaleReset;
     }
 }
 

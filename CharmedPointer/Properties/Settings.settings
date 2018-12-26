@@ -12,13 +12,13 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="VelocityThresholdToShow" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1000</Value>
+      <Value Profile="(Default)">500</Value>
     </Setting>
     <Setting Name="VelocityThresholdToHide" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="DurationToHide" Provider="crdx.Settings.PortableSettingsProvider" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">2</Value>
+      <Value Profile="(Default)">3.5</Value>
     </Setting>
   </Settings>
 </SettingsFile>

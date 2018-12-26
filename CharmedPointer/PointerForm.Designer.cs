@@ -34,8 +34,8 @@
             // 
             // timerForMainLoop
             // 
-            this.timerForMainLoop.Interval = 16;
-            this.timerForMainLoop.Tick += new System.EventHandler(this.timerForMainLoop_Tick);
+            this.timerForMainLoop.Interval = 10;
+            this.timerForMainLoop.Tick += new System.EventHandler(this.TimerForMainLoop_Tick);
             // 
             // PointerForm
             // 

@@ -204,6 +204,25 @@ namespace CharmedPointer
             return ((ListViewCharmItem)selection[0]).Charm;
         }
 
+        /// <summary>
+        /// 指定された倍率を実数で返す
+        /// </summary>
+        /// <returns></returns>
+        double GetScaleValue()
+        {
+            const double min = -100.0;
+            double val = trackBarCharmScale.Value;
+            double range = trackBarCharmScale.Maximum - trackBarCharmScale.Minimum;
+            return Math.Pow(10, (val / range / trackBarCharmScale.Minimum * min));
+        }
+
+        void SetScaleValue(double val)
+        {
+            const double min = -100.0;
+            double range = trackBarCharmScale.Maximum - trackBarCharmScale.Minimum;
+            trackBarCharmScale.Value = (int)(Math.Log10(val * range * trackBarCharmScale.Minimum / min));
+        }
+
         void SelectCharm()
         {
             var charm = GetSelectedCharm();
@@ -211,18 +230,22 @@ namespace CharmedPointer
             var image = charm.Image;
 
             double opacity = (double)(charm.Opacity) / 100.0;
+            double scale = GetScaleValue();
 
             numericUpDownCharmWidth.Value = charm.Size.Width;
             numericUpDownCharmHeight.Value = charm.Size.Height;
             numericUpDownCharmOriginX.Value = charm.Origin.X;
             numericUpDownCharmOriginY.Value = charm.Origin.Y;
             numericUpDownOpacity.Value = charm.Opacity;
+            SetScaleValue(charm.Scale);
 
             pointerForm.Opacity = opacity;
-            pointerForm.Origin = charm.Origin;
+            pointerForm.Origin = new Point((int)(charm.Origin.X * scale), (int)(charm.Origin.Y * scale));
             pointerForm.SetImage(image);
-            pointerForm.Width = charm.Size.Width;
-            pointerForm.Height = charm.Size.Height;
+            pointerForm.Width = (int)(charm.Size.Width * scale);
+            pointerForm.Height = (int)(charm.Size.Height * scale);
+
+            pointerForm.Preview();
 
             ValidateCharmParameters();
         }
@@ -236,16 +259,12 @@ namespace CharmedPointer
             charm.Size.Height = (int)numericUpDownCharmHeight.Value;
             charm.Origin.X = (int)numericUpDownCharmOriginX.Value;
             charm.Origin.Y = (int)numericUpDownCharmOriginY.Value;
+            charm.Scale = GetScaleValue();
 
             SelectCharm();
         }
 
-        private void buttonCharmEditOk_Click(object sender, EventArgs e)
-        {
-            ApplyCharmSettings();
-        }
-
-        private void buttonCharmEditCancel_Click(object sender, EventArgs e)
+        private void buttonCharmEditReset_Click(object sender, EventArgs e)
         {
             SelectCharm();
         }
@@ -270,16 +289,11 @@ namespace CharmedPointer
 
         void InvalidateCharmParameters()
         {
-            // OK、キャンセルボタンを押せるようにする
-            buttonCharmEditOk.Enabled = true;
-            buttonCharmEditCancel.Enabled = true;
+            ApplyCharmSettings();
         }
 
         void ValidateCharmParameters()
         {
-            // OK、キャンセルボタンを無効にする
-            buttonCharmEditOk.Enabled = false;
-            buttonCharmEditCancel.Enabled = false;
         }
 
         private void numericUpDownCharmWidth_ValueChanged(object sender, EventArgs e)
@@ -305,6 +319,18 @@ namespace CharmedPointer
         private void numericUpDownOpacity_ValueChanged(object sender, EventArgs e)
         {
             InvalidateCharmParameters();
+        }
+
+        private void trackBarCharmScale_Scroll(object sender, EventArgs e)
+        {
+            InvalidateCharmParameters();
+            toolTipMain.SetToolTip(trackBarCharmScale, (GetScaleValue() * 100.0).ToString("F0") + "%");
+        }
+
+        private void buttonCharmScaleReset_Click(object sender, EventArgs e)
+        {
+            trackBarCharmScale.Value = 0;
+            trackBarCharmScale_Scroll(sender, e);
         }
     }
 }

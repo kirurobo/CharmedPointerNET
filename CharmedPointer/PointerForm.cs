@@ -170,7 +170,7 @@ namespace CharmedPointer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timerForMainLoop_Tick(object sender, EventArgs e)
+        private void TimerForMainLoop_Tick(object sender, EventArgs e)
         {
             UpdateAverageVelocity();
             UpdatePointer();
@@ -191,6 +191,16 @@ namespace CharmedPointer
                     isVisible = false;
                 }
             }
+        }
+
+        /// <summary>
+        /// マウスを動かしていなくても強制的に表示開始とする
+        /// </summary>
+        public void Preview()
+        {
+            isVisible = true;
+            lastShownMilliseconds = stopwatch.ElapsedMilliseconds;
+            Show();
         }
 
         /// <summary>
