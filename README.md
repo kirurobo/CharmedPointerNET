@@ -19,6 +19,10 @@ PowerPointでは Ctrl キーを押しながらドラッグで仮想ポインタ�
 - Arlaune さんの [Star Cursor](http://www.vector.co.jp/vpack/browse/person/an023869.html)
   ← マウスを動かすと絵が出るものですが、指し示す用途ではありませんでした。
 
+## 動作環境
+- Windows 7 以降
+- .NET Framework 4
+
 ## インストール
 リリースからダウンロードし、適当なフォルダに展開してください。
 
