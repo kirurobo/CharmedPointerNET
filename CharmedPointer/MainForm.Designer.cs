@@ -235,7 +235,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarCharmScale.LargeChange = 10;
             this.trackBarCharmScale.Location = new System.Drawing.Point(82, 3);
-            this.trackBarCharmScale.Maximum = 49;
+            this.trackBarCharmScale.Maximum = 19;
             this.trackBarCharmScale.Minimum = -50;
             this.trackBarCharmScale.Name = "trackBarCharmScale";
             this.trackBarCharmScale.Size = new System.Drawing.Size(200, 45);

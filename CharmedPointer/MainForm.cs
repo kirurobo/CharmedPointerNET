@@ -89,36 +89,62 @@ namespace CharmedPointer
             int index = 0;
 
             listViewCharms.LargeImageList.Images.Clear();
-            //listViewCharms.SmallImageList.Images.Clear();
-
             listViewCharms.Items.Clear();
 
             image = Image.FromFile("Images/GreenCircle.png");
             listViewCharms.LargeImageList.Images.Add(image);
-            //listViewCharms.SmallImageList.Images.Add(image);
             item = new ListViewCharmItem("Green Circle", image, index);
+            item.Charm.Scale = 0.2;
             listViewCharms.Items.Add(item);
             index++;
 
             image = Image.FromFile("Images/RedCircle.png");
             listViewCharms.LargeImageList.Images.Add(image);
-            //listViewCharms.SmallImageList.Images.Add(image);
             item = new ListViewCharmItem("Red Circle", image, index);
+            item.Charm.Scale = 0.2;
             listViewCharms.Items.Add(item);
             index++;
 
             image = Image.FromFile("Images/YellowCircle.png");
             listViewCharms.LargeImageList.Images.Add(image);
-            //listViewCharms.SmallImageList.Images.Add(image);
             item = new ListViewCharmItem("Yellow Circle", image, index);
+            item.Charm.Scale = 0.2;
             listViewCharms.Items.Add(item);
             index++;
 
             image = Image.FromFile("Images/YellowFilledCircle.png");
             listViewCharms.LargeImageList.Images.Add(image);
-            //listViewCharms.SmallImageList.Images.Add(image);
             item = new ListViewCharmItem("Yellow Filled Circle", image, index);
+            item.Charm.Scale = 0.2;
             item.Charm.Opacity = 50;
+            listViewCharms.Items.Add(item);
+            index++;
+
+            image = Image.FromFile("Images/PowerPointLaser.png");
+            listViewCharms.LargeImageList.Images.Add(image);
+            item = new ListViewCharmItem("PowerPoint Like", image, index);
+            item.Charm.Scale = 0.2;
+            item.Charm.Opacity = 80;
+            listViewCharms.Items.Add(item);
+            index++;
+
+            image = Image.FromFile("Images/LargeCursor.png");
+            listViewCharms.LargeImageList.Images.Add(image);
+            item = new ListViewCharmItem("Arrow", image, index);
+            item.Charm.Scale = 0.5;
+            item.Charm.Opacity = 80;
+            item.Charm.Origin.X = 0;
+            item.Charm.Origin.Y = 0;
+            listViewCharms.Items.Add(item);
+            index++;
+
+            image = Image.FromFile("Images/Laser.png");
+            listViewCharms.LargeImageList.Images.Add(image);
+            item = new ListViewCharmItem("Yellow Filled Circle", image, index);
+            item.Charm.Scale = 0.5;
+            item.Charm.Opacity = 80;
+            item.Charm.Origin.X = 0;
+            item.Charm.Origin.Y = 0;
             listViewCharms.Items.Add(item);
             index++;
         }
@@ -253,7 +279,7 @@ namespace CharmedPointer
         {
             const double min = -100.0;
             double range = trackBarCharmScale.Maximum - trackBarCharmScale.Minimum;
-            trackBarCharmScale.Value = (int)(Math.Log10(val * range * trackBarCharmScale.Minimum / min));
+            trackBarCharmScale.Value = (int)(Math.Log10(val) * range * trackBarCharmScale.Minimum / min);
         }
 
         void SelectCharm()
@@ -263,7 +289,6 @@ namespace CharmedPointer
             var image = charm.Image;
 
             double opacity = (double)(charm.Opacity) / 100.0;
-            double scale = GetScaleValue();
 
             // フォームの値変更時のイベントはスキップさせる
             isParameterChanging = true;
@@ -276,10 +301,10 @@ namespace CharmedPointer
             SetScaleValue(charm.Scale);
 
             pointerForm.Opacity = opacity;
-            pointerForm.Origin = new Point((int)(charm.Origin.X * scale), (int)(charm.Origin.Y * scale));
+            pointerForm.Origin = new Point((int)(charm.Origin.X * charm.Scale), (int)(charm.Origin.Y * charm.Scale));
             pointerForm.SetImage(image);
-            pointerForm.Width = (int)(charm.Size.Width * scale);
-            pointerForm.Height = (int)(charm.Size.Height * scale);
+            pointerForm.Width = (int)(charm.Size.Width * charm.Scale);
+            pointerForm.Height = (int)(charm.Size.Height * charm.Scale);
 
             pointerForm.Preview();
 
@@ -333,6 +358,9 @@ namespace CharmedPointer
 
         void ValidateCharmParameters()
         {
+            toolTipMain.SetToolTip(trackBarCharmScale, (GetScaleValue() * 100.0).ToString("F0") + "%");
+            toolTipMain.SetToolTip(trackBarCharmOpacity, trackBarCharmOpacity.Value.ToString("F0") + "%");
+
         }
 
         private void numericUpDownCharmWidth_ValueChanged(object sender, EventArgs e)
@@ -359,8 +387,8 @@ namespace CharmedPointer
 
         private void trackBarCharmScale_Scroll(object sender, EventArgs e)
         {
-            if (isParameterChanging) return;
-            toolTipMain.SetToolTip(trackBarCharmScale, (GetScaleValue() * 100.0).ToString("F0") + "%");
+            //toolTipMain.SetToolTip(trackBarCharmScale, (GetScaleValue() * 100.0).ToString("F0") + "%");
+            //if (isParameterChanging) return;
             InvalidateCharmParameters();
         }
 
@@ -372,9 +400,9 @@ namespace CharmedPointer
 
         private void trackBarCharmOpacity_Scroll(object sender, EventArgs e)
         {
+            //TrackBar track = (TrackBar)sender;
+            //toolTipMain.SetToolTip(track, track.Value.ToString("F0") + "%");
             if (isParameterChanging) return;
-            TrackBar track = (TrackBar)sender;
-            toolTipMain.SetToolTip(track, track.Value.ToString("F0") + "%");
             InvalidateCharmParameters();
         }
     }

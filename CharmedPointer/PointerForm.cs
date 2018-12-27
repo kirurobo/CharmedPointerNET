@@ -124,17 +124,27 @@ namespace CharmedPointer
 
         protected override bool ShowWithoutActivation => true;
 
+        private void HideCursor()
+        {
+            while (ShowCursor(false) >= 0) { }
+        }
+
+        private void ShowCursor()
+        {
+            while (ShowCursor(true) < 0) { }
+        }
+
         public void Begin()
         {
             Show();
-            //ShowCursor(false);
+            HideCursor();
             isVisible = true;
         }
 
         public void End()
         {
             Hide();
-            //ShowCursor(true);
+            ShowCursor();
             isVisible = false;
         }
 
