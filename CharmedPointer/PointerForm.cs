@@ -308,7 +308,7 @@ namespace CharmedPointer
         /// <param name="e"></param>
         private void PointerForm_Shown(object sender, EventArgs e)
         {
-            Hide();
+            //Hide();
         }
     }
 

@@ -31,7 +31,31 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPageCharms = new System.Windows.Forms.TabPage();
+            this.splitContainerCharms = new System.Windows.Forms.SplitContainer();
+            this.toolStripEditCharms = new System.Windows.Forms.ToolStrip();
+            this.listViewCharms = new System.Windows.Forms.ListView();
+            this.columnHeaderImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageListCharms = new System.Windows.Forms.ImageList(this.components);
+            this.trackBarCharmOpacity = new System.Windows.Forms.TrackBar();
+            this.trackBarCharmScale = new System.Windows.Forms.TrackBar();
+            this.buttonCharmEditReset = new System.Windows.Forms.Button();
+            this.buttonCharmOriginReset = new System.Windows.Forms.Button();
+            this.buttonCharmScaleReset = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDownCharmHeight = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownCharmOriginY = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownCharmWidth = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownCharmOriginX = new System.Windows.Forms.NumericUpDown();
+            this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxUseNotifyIcon = new System.Windows.Forms.CheckBox();
             this.checkBoxShowSettingsOnStart = new System.Windows.Forms.CheckBox();
@@ -45,34 +69,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDownVelocityToHide = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownVelocityToShow = new System.Windows.Forms.NumericUpDown();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.splitContainerCharms = new System.Windows.Forms.SplitContainer();
-            this.toolStripEditCharms = new System.Windows.Forms.ToolStrip();
-            this.listViewCharms = new System.Windows.Forms.ListView();
-            this.columnHeaderImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageListCharms = new System.Windows.Forms.ImageList(this.components);
-            this.trackBarCharmScale = new System.Windows.Forms.TrackBar();
-            this.buttonCharmEditReset = new System.Windows.Forms.Button();
-            this.buttonCharmOriginReset = new System.Windows.Forms.Button();
-            this.buttonCharmScaleReset = new System.Windows.Forms.Button();
-            this.buttonCharmSizeReset = new System.Windows.Forms.Button();
-            this.checkBoxCharmOriginLink = new System.Windows.Forms.CheckBox();
-            this.checkBoxCharmSizeLink = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDownCharmHeight = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownCharmOriginY = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownCharmWidth = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownOpacity = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownCharmOriginX = new System.Windows.Forms.NumericUpDown();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPageAbout = new System.Windows.Forms.TabPage();
             this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelVersion = new System.Windows.Forms.Label();
@@ -90,33 +87,33 @@
             this.openFileDialogAddCharm = new System.Windows.Forms.OpenFileDialog();
             this.toolTipMain = new System.Windows.Forms.ToolTip(this.components);
             this.tabControlMain.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPageCharms.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCharms)).BeginInit();
+            this.splitContainerCharms.Panel1.SuspendLayout();
+            this.splitContainerCharms.Panel2.SuspendLayout();
+            this.splitContainerCharms.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCharmOpacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCharmScale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginX)).BeginInit();
+            this.tabPageGeneral.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDurationToHide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocityToHide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocityToShow)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCharms)).BeginInit();
-            this.splitContainerCharms.Panel1.SuspendLayout();
-            this.splitContainerCharms.Panel2.SuspendLayout();
-            this.splitContainerCharms.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarCharmScale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOpacity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginX)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            this.tabPageAbout.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.contextMenuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMain
             // 
-            this.tabControlMain.Controls.Add(this.tabPage1);
-            this.tabControlMain.Controls.Add(this.tabPage2);
-            this.tabControlMain.Controls.Add(this.tabPage3);
+            this.tabControlMain.Controls.Add(this.tabPageCharms);
+            this.tabControlMain.Controls.Add(this.tabPageGeneral);
+            this.tabControlMain.Controls.Add(this.tabPageAbout);
             this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMain.Location = new System.Drawing.Point(0, 0);
             this.tabControlMain.Name = "tabControlMain";
@@ -124,17 +121,355 @@
             this.tabControlMain.Size = new System.Drawing.Size(464, 281);
             this.tabControlMain.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPageCharms
             // 
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(456, 255);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "全般";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageCharms.Controls.Add(this.splitContainerCharms);
+            this.tabPageCharms.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCharms.Name = "tabPageCharms";
+            this.tabPageCharms.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCharms.Size = new System.Drawing.Size(456, 255);
+            this.tabPageCharms.TabIndex = 1;
+            this.tabPageCharms.Text = "カーソル変更";
+            this.tabPageCharms.UseVisualStyleBackColor = true;
+            // 
+            // splitContainerCharms
+            // 
+            this.splitContainerCharms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCharms.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerCharms.Name = "splitContainerCharms";
+            // 
+            // splitContainerCharms.Panel1
+            // 
+            this.splitContainerCharms.Panel1.Controls.Add(this.toolStripEditCharms);
+            this.splitContainerCharms.Panel1.Controls.Add(this.listViewCharms);
+            // 
+            // splitContainerCharms.Panel2
+            // 
+            this.splitContainerCharms.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerCharms.Panel2.Controls.Add(this.trackBarCharmOpacity);
+            this.splitContainerCharms.Panel2.Controls.Add(this.trackBarCharmScale);
+            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmEditReset);
+            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmOriginReset);
+            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmScaleReset);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label12);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label9);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label11);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label8);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label16);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label10);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label13);
+            this.splitContainerCharms.Panel2.Controls.Add(this.label7);
+            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmHeight);
+            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmOriginY);
+            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmWidth);
+            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmOriginX);
+            this.splitContainerCharms.Size = new System.Drawing.Size(450, 249);
+            this.splitContainerCharms.SplitterDistance = 120;
+            this.splitContainerCharms.TabIndex = 1;
+            // 
+            // toolStripEditCharms
+            // 
+            this.toolStripEditCharms.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStripEditCharms.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripEditCharms.Location = new System.Drawing.Point(0, 184);
+            this.toolStripEditCharms.Name = "toolStripEditCharms";
+            this.toolStripEditCharms.Size = new System.Drawing.Size(135, 25);
+            this.toolStripEditCharms.TabIndex = 1;
+            this.toolStripEditCharms.Text = "toolStrip1";
+            this.toolStripEditCharms.Visible = false;
+            // 
+            // listViewCharms
+            // 
+            this.listViewCharms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderImage,
+            this.columnHeaderName});
+            this.listViewCharms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewCharms.HideSelection = false;
+            this.listViewCharms.LargeImageList = this.imageListCharms;
+            this.listViewCharms.Location = new System.Drawing.Point(0, 0);
+            this.listViewCharms.MultiSelect = false;
+            this.listViewCharms.Name = "listViewCharms";
+            this.listViewCharms.Size = new System.Drawing.Size(120, 249);
+            this.listViewCharms.SmallImageList = this.imageListCharms;
+            this.listViewCharms.TabIndex = 0;
+            this.listViewCharms.UseCompatibleStateImageBehavior = false;
+            this.listViewCharms.SelectedIndexChanged += new System.EventHandler(this.listViewCharms_SelectedIndexChanged);
+            // 
+            // columnHeaderImage
+            // 
+            this.columnHeaderImage.Text = "Image";
+            // 
+            // columnHeaderName
+            // 
+            this.columnHeaderName.Text = "Name";
+            this.columnHeaderName.Width = 300;
+            // 
+            // imageListCharms
+            // 
+            this.imageListCharms.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListCharms.ImageStream")));
+            this.imageListCharms.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListCharms.Images.SetKeyName(0, "GreenCircle.gif");
+            this.imageListCharms.Images.SetKeyName(1, "RedCircle.gif");
+            this.imageListCharms.Images.SetKeyName(2, "YellowCircle.gif");
+            this.imageListCharms.Images.SetKeyName(3, "YellowFilledCircle.gif");
+            // 
+            // trackBarCharmOpacity
+            // 
+            this.trackBarCharmOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarCharmOpacity.LargeChange = 20;
+            this.trackBarCharmOpacity.Location = new System.Drawing.Point(82, 103);
+            this.trackBarCharmOpacity.Maximum = 100;
+            this.trackBarCharmOpacity.Name = "trackBarCharmOpacity";
+            this.trackBarCharmOpacity.Size = new System.Drawing.Size(200, 45);
+            this.trackBarCharmOpacity.SmallChange = 10;
+            this.trackBarCharmOpacity.TabIndex = 20;
+            this.trackBarCharmOpacity.TickFrequency = 10;
+            this.toolTipMain.SetToolTip(this.trackBarCharmOpacity, "100%");
+            this.trackBarCharmOpacity.Value = 100;
+            this.trackBarCharmOpacity.Scroll += new System.EventHandler(this.trackBarCharmOpacity_Scroll);
+            // 
+            // trackBarCharmScale
+            // 
+            this.trackBarCharmScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarCharmScale.LargeChange = 10;
+            this.trackBarCharmScale.Location = new System.Drawing.Point(82, 3);
+            this.trackBarCharmScale.Maximum = 49;
+            this.trackBarCharmScale.Minimum = -50;
+            this.trackBarCharmScale.Name = "trackBarCharmScale";
+            this.trackBarCharmScale.Size = new System.Drawing.Size(200, 45);
+            this.trackBarCharmScale.SmallChange = 5;
+            this.trackBarCharmScale.TabIndex = 1;
+            this.trackBarCharmScale.TickFrequency = 10;
+            this.toolTipMain.SetToolTip(this.trackBarCharmScale, "100%");
+            this.trackBarCharmScale.Scroll += new System.EventHandler(this.trackBarCharmScale_Scroll);
+            // 
+            // buttonCharmEditReset
+            // 
+            this.buttonCharmEditReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCharmEditReset.Location = new System.Drawing.Point(224, 154);
+            this.buttonCharmEditReset.Name = "buttonCharmEditReset";
+            this.buttonCharmEditReset.Size = new System.Drawing.Size(75, 29);
+            this.buttonCharmEditReset.TabIndex = 15;
+            this.buttonCharmEditReset.Text = "リセット";
+            this.buttonCharmEditReset.UseVisualStyleBackColor = true;
+            this.buttonCharmEditReset.Visible = false;
+            this.buttonCharmEditReset.Click += new System.EventHandler(this.buttonCharmEditReset_Click);
+            // 
+            // buttonCharmOriginReset
+            // 
+            this.buttonCharmOriginReset.Location = new System.Drawing.Point(224, 77);
+            this.buttonCharmOriginReset.Name = "buttonCharmOriginReset";
+            this.buttonCharmOriginReset.Size = new System.Drawing.Size(40, 20);
+            this.buttonCharmOriginReset.TabIndex = 19;
+            this.buttonCharmOriginReset.Text = "中心";
+            this.toolTipMain.SetToolTip(this.buttonCharmOriginReset, "画像の中心になるようリセット");
+            this.buttonCharmOriginReset.UseVisualStyleBackColor = true;
+            this.buttonCharmOriginReset.Click += new System.EventHandler(this.buttonCharmOriginReset_Click);
+            // 
+            // buttonCharmScaleReset
+            // 
+            this.buttonCharmScaleReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCharmScaleReset.Location = new System.Drawing.Point(281, 3);
+            this.buttonCharmScaleReset.Name = "buttonCharmScaleReset";
+            this.buttonCharmScaleReset.Size = new System.Drawing.Size(42, 20);
+            this.buttonCharmScaleReset.TabIndex = 18;
+            this.buttonCharmScaleReset.Text = "100%";
+            this.buttonCharmScaleReset.UseVisualStyleBackColor = true;
+            this.buttonCharmScaleReset.Click += new System.EventHandler(this.buttonCharmScaleReset_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(154, 55);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(12, 12);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Y";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(154, 79);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(12, 12);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Y";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(80, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(12, 12);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "X";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(80, 79);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(12, 12);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "X";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "表示倍率";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 12);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "画像サイズ";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 112);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 12);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "不透明度";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 79);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 12);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "カーソル原点";
+            // 
+            // numericUpDownCharmHeight
+            // 
+            this.numericUpDownCharmHeight.Enabled = false;
+            this.numericUpDownCharmHeight.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmHeight.Location = new System.Drawing.Point(168, 54);
+            this.numericUpDownCharmHeight.Maximum = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmHeight.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmHeight.Name = "numericUpDownCharmHeight";
+            this.numericUpDownCharmHeight.ReadOnly = true;
+            this.numericUpDownCharmHeight.Size = new System.Drawing.Size(50, 19);
+            this.numericUpDownCharmHeight.TabIndex = 6;
+            this.numericUpDownCharmHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownCharmHeight.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmHeight.ValueChanged += new System.EventHandler(this.numericUpDownCharmHeight_ValueChanged);
+            // 
+            // numericUpDownCharmOriginY
+            // 
+            this.numericUpDownCharmOriginY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmOriginY.Location = new System.Drawing.Point(168, 78);
+            this.numericUpDownCharmOriginY.Maximum = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmOriginY.Name = "numericUpDownCharmOriginY";
+            this.numericUpDownCharmOriginY.Size = new System.Drawing.Size(50, 19);
+            this.numericUpDownCharmOriginY.TabIndex = 11;
+            this.numericUpDownCharmOriginY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownCharmOriginY.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownCharmWidth
+            // 
+            this.numericUpDownCharmWidth.Enabled = false;
+            this.numericUpDownCharmWidth.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmWidth.Location = new System.Drawing.Point(94, 53);
+            this.numericUpDownCharmWidth.Maximum = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmWidth.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmWidth.Name = "numericUpDownCharmWidth";
+            this.numericUpDownCharmWidth.ReadOnly = true;
+            this.numericUpDownCharmWidth.Size = new System.Drawing.Size(50, 19);
+            this.numericUpDownCharmWidth.TabIndex = 4;
+            this.numericUpDownCharmWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownCharmWidth.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmWidth.ValueChanged += new System.EventHandler(this.numericUpDownCharmWidth_ValueChanged);
+            // 
+            // numericUpDownCharmOriginX
+            // 
+            this.numericUpDownCharmOriginX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmOriginX.Location = new System.Drawing.Point(94, 77);
+            this.numericUpDownCharmOriginX.Maximum = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            this.numericUpDownCharmOriginX.Name = "numericUpDownCharmOriginX";
+            this.numericUpDownCharmOriginX.Size = new System.Drawing.Size(50, 19);
+            this.numericUpDownCharmOriginX.TabIndex = 9;
+            this.numericUpDownCharmOriginX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownCharmOriginX.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // tabPageGeneral
+            // 
+            this.tabPageGeneral.Controls.Add(this.groupBox2);
+            this.tabPageGeneral.Controls.Add(this.groupBox1);
+            this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGeneral.Name = "tabPageGeneral";
+            this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGeneral.Size = new System.Drawing.Size(456, 255);
+            this.tabPageGeneral.TabIndex = 0;
+            this.tabPageGeneral.Text = "全般";
+            this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -320,400 +655,17 @@
             0});
             this.numericUpDownVelocityToShow.ValueChanged += new System.EventHandler(this.NumericUpDownVelocityToShow_ValueChanged);
             // 
-            // tabPage2
+            // tabPageAbout
             // 
-            this.tabPage2.Controls.Add(this.splitContainerCharms);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(456, 255);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "カーソル変更";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // splitContainerCharms
-            // 
-            this.splitContainerCharms.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerCharms.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerCharms.Name = "splitContainerCharms";
-            // 
-            // splitContainerCharms.Panel1
-            // 
-            this.splitContainerCharms.Panel1.Controls.Add(this.toolStripEditCharms);
-            this.splitContainerCharms.Panel1.Controls.Add(this.listViewCharms);
-            // 
-            // splitContainerCharms.Panel2
-            // 
-            this.splitContainerCharms.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainerCharms.Panel2.Controls.Add(this.trackBarCharmScale);
-            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmEditReset);
-            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmOriginReset);
-            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmScaleReset);
-            this.splitContainerCharms.Panel2.Controls.Add(this.buttonCharmSizeReset);
-            this.splitContainerCharms.Panel2.Controls.Add(this.checkBoxCharmOriginLink);
-            this.splitContainerCharms.Panel2.Controls.Add(this.checkBoxCharmSizeLink);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label12);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label9);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label11);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label8);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label16);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label10);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label13);
-            this.splitContainerCharms.Panel2.Controls.Add(this.label7);
-            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmHeight);
-            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmOriginY);
-            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmWidth);
-            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownOpacity);
-            this.splitContainerCharms.Panel2.Controls.Add(this.numericUpDownCharmOriginX);
-            this.splitContainerCharms.Size = new System.Drawing.Size(450, 249);
-            this.splitContainerCharms.SplitterDistance = 135;
-            this.splitContainerCharms.TabIndex = 1;
-            // 
-            // toolStripEditCharms
-            // 
-            this.toolStripEditCharms.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStripEditCharms.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripEditCharms.Location = new System.Drawing.Point(0, 184);
-            this.toolStripEditCharms.Name = "toolStripEditCharms";
-            this.toolStripEditCharms.Size = new System.Drawing.Size(135, 25);
-            this.toolStripEditCharms.TabIndex = 1;
-            this.toolStripEditCharms.Text = "toolStrip1";
-            this.toolStripEditCharms.Visible = false;
-            // 
-            // listViewCharms
-            // 
-            this.listViewCharms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderImage,
-            this.columnHeaderName});
-            this.listViewCharms.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewCharms.HideSelection = false;
-            this.listViewCharms.LargeImageList = this.imageListCharms;
-            this.listViewCharms.Location = new System.Drawing.Point(0, 0);
-            this.listViewCharms.MultiSelect = false;
-            this.listViewCharms.Name = "listViewCharms";
-            this.listViewCharms.Size = new System.Drawing.Size(135, 249);
-            this.listViewCharms.SmallImageList = this.imageListCharms;
-            this.listViewCharms.TabIndex = 0;
-            this.listViewCharms.UseCompatibleStateImageBehavior = false;
-            this.listViewCharms.SelectedIndexChanged += new System.EventHandler(this.listViewCharms_SelectedIndexChanged);
-            // 
-            // columnHeaderImage
-            // 
-            this.columnHeaderImage.Text = "Image";
-            // 
-            // columnHeaderName
-            // 
-            this.columnHeaderName.Text = "Name";
-            this.columnHeaderName.Width = 300;
-            // 
-            // imageListCharms
-            // 
-            this.imageListCharms.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListCharms.ImageStream")));
-            this.imageListCharms.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListCharms.Images.SetKeyName(0, "GreenCircle.gif");
-            this.imageListCharms.Images.SetKeyName(1, "RedCircle.gif");
-            this.imageListCharms.Images.SetKeyName(2, "YellowCircle.gif");
-            this.imageListCharms.Images.SetKeyName(3, "YellowFilledCircle.gif");
-            // 
-            // trackBarCharmScale
-            // 
-            this.trackBarCharmScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarCharmScale.LargeChange = 10;
-            this.trackBarCharmScale.Location = new System.Drawing.Point(82, 3);
-            this.trackBarCharmScale.Maximum = 49;
-            this.trackBarCharmScale.Minimum = -50;
-            this.trackBarCharmScale.Name = "trackBarCharmScale";
-            this.trackBarCharmScale.Size = new System.Drawing.Size(204, 45);
-            this.trackBarCharmScale.SmallChange = 5;
-            this.trackBarCharmScale.TabIndex = 1;
-            this.trackBarCharmScale.TickFrequency = 10;
-            this.toolTipMain.SetToolTip(this.trackBarCharmScale, "100%");
-            this.trackBarCharmScale.Scroll += new System.EventHandler(this.trackBarCharmScale_Scroll);
-            // 
-            // buttonCharmEditReset
-            // 
-            this.buttonCharmEditReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCharmEditReset.Location = new System.Drawing.Point(224, 215);
-            this.buttonCharmEditReset.Name = "buttonCharmEditReset";
-            this.buttonCharmEditReset.Size = new System.Drawing.Size(75, 29);
-            this.buttonCharmEditReset.TabIndex = 15;
-            this.buttonCharmEditReset.Text = "リセット";
-            this.buttonCharmEditReset.UseVisualStyleBackColor = true;
-            this.buttonCharmEditReset.Visible = false;
-            this.buttonCharmEditReset.Click += new System.EventHandler(this.buttonCharmEditReset_Click);
-            // 
-            // buttonCharmOriginReset
-            // 
-            this.buttonCharmOriginReset.Font = new System.Drawing.Font("Wingdings 3", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonCharmOriginReset.Location = new System.Drawing.Point(224, 104);
-            this.buttonCharmOriginReset.Name = "buttonCharmOriginReset";
-            this.buttonCharmOriginReset.Size = new System.Drawing.Size(20, 20);
-            this.buttonCharmOriginReset.TabIndex = 19;
-            this.buttonCharmOriginReset.Text = "Q";
-            this.toolTipMain.SetToolTip(this.buttonCharmOriginReset, "画像の中心になるようリセット");
-            this.buttonCharmOriginReset.UseVisualStyleBackColor = true;
-            this.buttonCharmOriginReset.Click += new System.EventHandler(this.buttonCharmOriginReset_Click);
-            // 
-            // buttonCharmScaleReset
-            // 
-            this.buttonCharmScaleReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCharmScaleReset.Font = new System.Drawing.Font("Wingdings 3", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonCharmScaleReset.Location = new System.Drawing.Point(288, 3);
-            this.buttonCharmScaleReset.Name = "buttonCharmScaleReset";
-            this.buttonCharmScaleReset.Size = new System.Drawing.Size(20, 20);
-            this.buttonCharmScaleReset.TabIndex = 18;
-            this.buttonCharmScaleReset.Text = "Q";
-            this.buttonCharmScaleReset.UseVisualStyleBackColor = true;
-            this.buttonCharmScaleReset.Click += new System.EventHandler(this.buttonCharmScaleReset_Click);
-            // 
-            // buttonCharmSizeReset
-            // 
-            this.buttonCharmSizeReset.Font = new System.Drawing.Font("Wingdings 3", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonCharmSizeReset.Location = new System.Drawing.Point(224, 53);
-            this.buttonCharmSizeReset.Name = "buttonCharmSizeReset";
-            this.buttonCharmSizeReset.Size = new System.Drawing.Size(20, 20);
-            this.buttonCharmSizeReset.TabIndex = 18;
-            this.buttonCharmSizeReset.Text = "Q";
-            this.toolTipMain.SetToolTip(this.buttonCharmSizeReset, "元のサイズにリセット");
-            this.buttonCharmSizeReset.UseVisualStyleBackColor = true;
-            this.buttonCharmSizeReset.Click += new System.EventHandler(this.buttonCharmSizeReset_Click);
-            // 
-            // checkBoxCharmOriginLink
-            // 
-            this.checkBoxCharmOriginLink.Checked = true;
-            this.checkBoxCharmOriginLink.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCharmOriginLink.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxCharmOriginLink.Location = new System.Drawing.Point(129, 124);
-            this.checkBoxCharmOriginLink.Name = "checkBoxCharmOriginLink";
-            this.checkBoxCharmOriginLink.Size = new System.Drawing.Size(75, 20);
-            this.checkBoxCharmOriginLink.TabIndex = 17;
-            this.checkBoxCharmOriginLink.Text = "比率固定";
-            this.checkBoxCharmOriginLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTipMain.SetToolTip(this.checkBoxCharmOriginLink, "縦横の比率を維持します");
-            this.checkBoxCharmOriginLink.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxCharmSizeLink
-            // 
-            this.checkBoxCharmSizeLink.Checked = true;
-            this.checkBoxCharmSizeLink.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCharmSizeLink.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxCharmSizeLink.Location = new System.Drawing.Point(129, 74);
-            this.checkBoxCharmSizeLink.Name = "checkBoxCharmSizeLink";
-            this.checkBoxCharmSizeLink.Size = new System.Drawing.Size(75, 20);
-            this.checkBoxCharmSizeLink.TabIndex = 16;
-            this.checkBoxCharmSizeLink.Text = "比率固定";
-            this.checkBoxCharmSizeLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTipMain.SetToolTip(this.checkBoxCharmSizeLink, "縦横の比率を維持します");
-            this.checkBoxCharmSizeLink.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(154, 55);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(12, 12);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Y";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(154, 106);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(12, 12);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Y";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(80, 55);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(12, 12);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "X";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(80, 106);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(12, 12);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "X";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 15);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 12);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "表示倍率";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 12);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "画像サイズ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 163);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 12);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "不透明度";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 106);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 12);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "カーソル原点";
-            // 
-            // numericUpDownCharmHeight
-            // 
-            this.numericUpDownCharmHeight.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmHeight.Location = new System.Drawing.Point(168, 54);
-            this.numericUpDownCharmHeight.Maximum = new decimal(new int[] {
-            640,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmHeight.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmHeight.Name = "numericUpDownCharmHeight";
-            this.numericUpDownCharmHeight.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownCharmHeight.TabIndex = 6;
-            this.numericUpDownCharmHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownCharmHeight.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmHeight.ValueChanged += new System.EventHandler(this.numericUpDownCharmHeight_ValueChanged);
-            // 
-            // numericUpDownCharmOriginY
-            // 
-            this.numericUpDownCharmOriginY.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmOriginY.Location = new System.Drawing.Point(168, 105);
-            this.numericUpDownCharmOriginY.Maximum = new decimal(new int[] {
-            640,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmOriginY.Name = "numericUpDownCharmOriginY";
-            this.numericUpDownCharmOriginY.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownCharmOriginY.TabIndex = 11;
-            this.numericUpDownCharmOriginY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownCharmOriginY.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDownCharmWidth
-            // 
-            this.numericUpDownCharmWidth.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmWidth.Location = new System.Drawing.Point(94, 53);
-            this.numericUpDownCharmWidth.Maximum = new decimal(new int[] {
-            640,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmWidth.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmWidth.Name = "numericUpDownCharmWidth";
-            this.numericUpDownCharmWidth.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownCharmWidth.TabIndex = 4;
-            this.numericUpDownCharmWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownCharmWidth.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmWidth.ValueChanged += new System.EventHandler(this.numericUpDownCharmWidth_ValueChanged);
-            // 
-            // numericUpDownOpacity
-            // 
-            this.numericUpDownOpacity.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownOpacity.Location = new System.Drawing.Point(94, 161);
-            this.numericUpDownOpacity.Name = "numericUpDownOpacity";
-            this.numericUpDownOpacity.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownOpacity.TabIndex = 13;
-            this.numericUpDownOpacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.toolTipMain.SetToolTip(this.numericUpDownOpacity, "0で完全に透明医、100で不透明です");
-            this.numericUpDownOpacity.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDownOpacity.ValueChanged += new System.EventHandler(this.numericUpDownOpacity_ValueChanged);
-            // 
-            // numericUpDownCharmOriginX
-            // 
-            this.numericUpDownCharmOriginX.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmOriginX.Location = new System.Drawing.Point(94, 104);
-            this.numericUpDownCharmOriginX.Maximum = new decimal(new int[] {
-            640,
-            0,
-            0,
-            0});
-            this.numericUpDownCharmOriginX.Name = "numericUpDownCharmOriginX";
-            this.numericUpDownCharmOriginX.Size = new System.Drawing.Size(50, 19);
-            this.numericUpDownCharmOriginX.TabIndex = 9;
-            this.numericUpDownCharmOriginX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownCharmOriginX.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.richTextBoxLicense);
-            this.tabPage3.Controls.Add(this.groupBox3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(456, 255);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "情報";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPageAbout.Controls.Add(this.richTextBoxLicense);
+            this.tabPageAbout.Controls.Add(this.groupBox3);
+            this.tabPageAbout.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAbout.Name = "tabPageAbout";
+            this.tabPageAbout.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAbout.Size = new System.Drawing.Size(456, 255);
+            this.tabPageAbout.TabIndex = 2;
+            this.tabPageAbout.Text = "情報";
+            this.tabPageAbout.UseVisualStyleBackColor = true;
             // 
             // richTextBoxLicense
             // 
@@ -851,10 +803,24 @@
             this.Name = "MainForm";
             this.Text = "チャームポインター";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.tabControlMain.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabPageCharms.ResumeLayout(false);
+            this.splitContainerCharms.Panel1.ResumeLayout(false);
+            this.splitContainerCharms.Panel1.PerformLayout();
+            this.splitContainerCharms.Panel2.ResumeLayout(false);
+            this.splitContainerCharms.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCharms)).EndInit();
+            this.splitContainerCharms.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCharmOpacity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCharmScale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginX)).EndInit();
+            this.tabPageGeneral.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -862,20 +828,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDurationToHide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocityToHide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVelocityToShow)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.splitContainerCharms.Panel1.ResumeLayout(false);
-            this.splitContainerCharms.Panel1.PerformLayout();
-            this.splitContainerCharms.Panel2.ResumeLayout(false);
-            this.splitContainerCharms.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCharms)).EndInit();
-            this.splitContainerCharms.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarCharmScale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOpacity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCharmOriginX)).EndInit();
-            this.tabPage3.ResumeLayout(false);
+            this.tabPageAbout.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.contextMenuStripMain.ResumeLayout(false);
@@ -886,8 +839,8 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageGeneral;
+        private System.Windows.Forms.TabPage tabPageCharms;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -906,8 +859,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderName;
         private System.Windows.Forms.ImageList imageListCharms;
         private System.Windows.Forms.ToolStripButton toolStripButtonRemoveCharm;
-        private System.Windows.Forms.Button buttonCharmSizeReset;
-        private System.Windows.Forms.CheckBox checkBoxCharmSizeLink;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
@@ -918,12 +869,10 @@
         private System.Windows.Forms.NumericUpDown numericUpDownCharmOriginY;
         private System.Windows.Forms.NumericUpDown numericUpDownCharmWidth;
         private System.Windows.Forms.NumericUpDown numericUpDownCharmOriginX;
-        private System.Windows.Forms.CheckBox checkBoxCharmOriginLink;
         private System.Windows.Forms.Button buttonCharmOriginReset;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown numericUpDownOpacity;
         private System.Windows.Forms.NotifyIcon notifyIconMain;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripMain;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShowSettings;
@@ -934,7 +883,7 @@
         private System.Windows.Forms.CheckBox checkBoxUseNotifyIcon;
         private System.Windows.Forms.Button buttonCharmEditReset;
         private System.Windows.Forms.OpenFileDialog openFileDialogAddCharm;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPageAbout;
         private System.Windows.Forms.RichTextBox richTextBoxLicense;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label14;
@@ -944,6 +893,7 @@
         private System.Windows.Forms.TrackBar trackBarCharmScale;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button buttonCharmScaleReset;
+        private System.Windows.Forms.TrackBar trackBarCharmOpacity;
     }
 }
 
