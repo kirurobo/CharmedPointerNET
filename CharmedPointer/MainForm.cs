@@ -38,7 +38,10 @@ namespace CharmedPointer
 
             LoadSettings();
 
-            defaultCharm = new Charm(Resources.DefaultCharmImage);
+            defaultCharm = new Charm(Resources.DefaultCharm);
+            defaultCharm.Scale = 0.2;
+            defaultCharm.Opacity = 50;
+
 
             toolStripMenuItemQuit.Click += ToolStripMenuItemQuit_Click;
             toolStripMenuItemShowSettings.Click += ToolStripMenuItemShowSettings_Click;

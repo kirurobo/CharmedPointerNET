@@ -137,14 +137,14 @@ namespace CharmedPointer
         public void Begin()
         {
             Show();
-            HideCursor();
+            //HideCursor();
             isVisible = true;
         }
 
         public void End()
         {
             Hide();
-            ShowCursor();
+            //ShowCursor();
             isVisible = false;
         }
 

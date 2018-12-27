@@ -63,9 +63,9 @@ namespace CharmedPointer.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap DefaultCharmImage {
+        internal static System.Drawing.Bitmap DefaultCharm {
             get {
-                object obj = ResourceManager.GetObject("DefaultCharmImage", resourceCulture);
+                object obj = ResourceManager.GetObject("DefaultCharm", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
