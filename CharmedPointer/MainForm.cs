@@ -408,5 +408,14 @@ namespace CharmedPointer
             if (isParameterChanging) return;
             InvalidateCharmParameters();
         }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+                Hide();
+            }
+        }
     }
 }
