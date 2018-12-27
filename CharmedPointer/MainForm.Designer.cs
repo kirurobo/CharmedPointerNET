@@ -227,7 +227,7 @@
             this.trackBarCharmOpacity.TickFrequency = 10;
             this.toolTipMain.SetToolTip(this.trackBarCharmOpacity, "100%");
             this.trackBarCharmOpacity.Value = 100;
-            this.trackBarCharmOpacity.Scroll += new System.EventHandler(this.trackBarCharmOpacity_Scroll);
+            this.trackBarCharmOpacity.ValueChanged += new System.EventHandler(this.CharmParameterChanged);
             // 
             // trackBarCharmScale
             // 
@@ -243,7 +243,7 @@
             this.trackBarCharmScale.TabIndex = 1;
             this.trackBarCharmScale.TickFrequency = 10;
             this.toolTipMain.SetToolTip(this.trackBarCharmScale, "100%");
-            this.trackBarCharmScale.Scroll += new System.EventHandler(this.trackBarCharmScale_Scroll);
+            this.trackBarCharmScale.ValueChanged += new System.EventHandler(this.CharmParameterChanged);
             // 
             // buttonCharmEditReset
             // 
@@ -380,7 +380,7 @@
             0,
             0,
             0});
-            this.numericUpDownCharmHeight.ValueChanged += new System.EventHandler(this.numericUpDownCharmHeight_ValueChanged);
+            this.numericUpDownCharmHeight.ValueChanged += new System.EventHandler(this.CharmParameterChanged);
             // 
             // numericUpDownCharmOriginY
             // 
@@ -404,6 +404,7 @@
             0,
             0,
             0});
+            this.numericUpDownCharmOriginY.ValueChanged += new System.EventHandler(this.CharmParameterChanged);
             // 
             // numericUpDownCharmWidth
             // 
@@ -434,7 +435,7 @@
             0,
             0,
             0});
-            this.numericUpDownCharmWidth.ValueChanged += new System.EventHandler(this.numericUpDownCharmWidth_ValueChanged);
+            this.numericUpDownCharmWidth.ValueChanged += new System.EventHandler(this.CharmParameterChanged);
             // 
             // numericUpDownCharmOriginX
             // 
@@ -458,6 +459,7 @@
             0,
             0,
             0});
+            this.numericUpDownCharmOriginX.ValueChanged += new System.EventHandler(this.CharmParameterChanged);
             // 
             // tabPageGeneral
             // 
@@ -803,8 +805,6 @@
             this.Name = "MainForm";
             this.Text = "チャームポインター";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.tabControlMain.ResumeLayout(false);

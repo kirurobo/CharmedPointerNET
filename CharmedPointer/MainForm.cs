@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -36,6 +37,9 @@ namespace CharmedPointer
         {
             InitializeComponent();
 
+            // 実行ファイルのある場所をカレントディレクトリにする
+            Directory.SetCurrentDirectory(System.AppDomain.CurrentDomain.BaseDirectory);
+
             ResetCharmList();
 
             LoadSettings();
@@ -50,21 +54,13 @@ namespace CharmedPointer
 
             // 自分のバージョン番号を取得
             labelVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-            // 常駐していても、ログオフ、シャットダウンでは修了できるようにする
-            // 参考： https://dobon.net/vb/dotnet/system/sessionending.html
-            //SystemEvents.SessionEnding += new SessionEndingEventHandler(SystemEvents_SessionEnding);
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //SystemEvents.SessionEnding -= new SessionEndingEventHandler(SystemEvents_SessionEnding);
-        }
-
+        /// <summary>
+        /// ログオフやシャットダウン時には常駐していても終了できるようウィンドウプロシージャでトラップ
+        /// 参考： https://docs.microsoft.com/ja-jp/dotnet/api/microsoft.win32.systemevents.sessionending?redirectedfrom=MSDN&view=netframework-4.7.2
+        /// </summary>
+        /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == WM_QUERYENDSESSION)
@@ -74,6 +70,11 @@ namespace CharmedPointer
             base.WndProc(ref m);
         }
 
+        /// <summary>
+        /// 起動時の処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Shown(object sender, EventArgs e)
         {
             // 起動時に設定フォームを開くか
@@ -89,12 +90,41 @@ namespace CharmedPointer
             pointerForm.Show(this);
 
             listViewCharms.Items[0].Selected = true;
-            //SelectCharm();
-            pointerForm.Preview();
+            //pointerForm.Preview();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 常駐する場合は閉じるボタンをキャンセルする
+            if (checkBoxUseNotifyIcon.Checked && !isExiting)
+            {
+                Hide();
+                e.Cancel = true;
+            }
+
+            // 終了直前に設定を保存
+            SaveSettings();
         }
 
         /// <summary>
-        /// 画像リストをデフォルトで作成
+        /// 最小化時にはタスクトレイに格納
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+                Hide();
+            }
+        }
+
+
+        #region Original Methods
+
+        /// <summary>
+        /// 標準のチャームリストを作成
         /// </summary>
         private void ResetCharmList()
         {
@@ -163,6 +193,9 @@ namespace CharmedPointer
             index++;
         }
 
+        /// <summary>
+        /// 設定ファイルを読み込み
+        /// </summary>
         void LoadSettings()
         {
             numericUpDownVelocityToShow.Value = (Decimal)Settings.Default.VelocityThresholdToShow;
@@ -173,6 +206,9 @@ namespace CharmedPointer
             checkBoxUseNotifyIcon.Checked = Settings.Default.UseNotifyIcon;
         }
 
+        /// <summary>
+        /// 設定をファイルに保存
+        /// </summary>
         void SaveSettings()
         {
             Settings.Default.VelocityThresholdToShow = (int)numericUpDownVelocityToShow.Value;
@@ -184,6 +220,123 @@ namespace CharmedPointer
 
             Settings.Default.Save();
         }
+
+        /// <summary>
+        /// 常駐していても終了させる
+        /// </summary>
+        public void Quit()
+        {
+            isExiting = true;
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// 現在選択されているチャームを取得
+        /// </summary>
+        /// <returns></returns>
+        Charm GetSelectedCharm()
+        {
+            var selection = listViewCharms.SelectedItems;
+            if (selection.Count != 1)
+            {
+                return defaultCharm;    // 正しく選択されていなければデフォルトのチャームを返す
+            }
+
+            return ((ListViewCharmItem)selection[0]).Charm;
+        }
+
+        /// <summary>
+        /// 指定された倍率を実数で返す
+        /// </summary>
+        /// <returns></returns>
+        double GetScaleValue()
+        {
+            const double min = -100.0;
+            double val = trackBarCharmScale.Value;
+            double range = trackBarCharmScale.Maximum - trackBarCharmScale.Minimum;
+            return Math.Pow(10, (val / range / trackBarCharmScale.Minimum * min));
+        }
+
+        void SetScaleValue(double val)
+        {
+            const double min = -100.0;
+            double range = trackBarCharmScale.Maximum - trackBarCharmScale.Minimum;
+            trackBarCharmScale.Value = (int)(Math.Log10(val) * range * trackBarCharmScale.Minimum / min);
+        }
+
+        /// <summary>
+        /// 選択されたチャームを適用
+        /// </summary>
+        void SelectCharm()
+        {
+            var charm = GetSelectedCharm();
+            if (charm == null) return;
+            var image = charm.Image;
+
+            double opacity = (double)(charm.Opacity) / 100.0;
+
+            // フォームの値変更時のイベントはスキップさせる
+            isParameterChanging = true;
+
+            numericUpDownCharmWidth.Value = charm.Size.Width;
+            numericUpDownCharmHeight.Value = charm.Size.Height;
+            numericUpDownCharmOriginX.Value = charm.Origin.X;
+            numericUpDownCharmOriginY.Value = charm.Origin.Y;
+            trackBarCharmOpacity.Value = charm.Opacity;
+            SetScaleValue(charm.Scale);
+
+            pointerForm.Opacity = opacity;
+            pointerForm.Origin = new Point((int)(charm.Origin.X * charm.Scale), (int)(charm.Origin.Y * charm.Scale));
+            pointerForm.SetImage(image);
+            pointerForm.Width = (int)(charm.Size.Width * charm.Scale);
+            pointerForm.Height = (int)(charm.Size.Height * charm.Scale);
+
+            pointerForm.Preview();
+
+            // フォームの値変更時のイベントを処理するように戻す
+            isParameterChanging = false;
+
+            ValidateCharmParameters();
+        }
+
+        /// <summary>
+        /// フォームのパラメータをチャームに反映させる
+        /// </summary>
+        void ApplyCharmSettings()
+        {
+            var charm = GetSelectedCharm();
+
+            charm.Opacity = (int)(trackBarCharmOpacity.Value);
+            charm.Size.Width = (int)numericUpDownCharmWidth.Value;
+            charm.Size.Height = (int)numericUpDownCharmHeight.Value;
+            charm.Origin.X = (int)numericUpDownCharmOriginX.Value;
+            charm.Origin.Y = (int)numericUpDownCharmOriginY.Value;
+            charm.Scale = GetScaleValue();
+
+            SelectCharm();
+        }
+
+        /// <summary>
+        /// チャームのパラメータが変更されたときの処理
+        /// </summary>
+        void InvalidateCharmParameters()
+        {
+            ApplyCharmSettings();
+        }
+
+        /// <summary>
+        /// チャームのパラメータ変更完了時の処理
+        /// </summary>
+        void ValidateCharmParameters()
+        {
+            // スライダーのツールチップで値を表示する
+            toolTipMain.SetToolTip(trackBarCharmScale, (GetScaleValue() * 100.0).ToString("F0") + "%");
+            toolTipMain.SetToolTip(trackBarCharmOpacity, trackBarCharmOpacity.Value.ToString("F0") + "%");
+
+        }
+
+        #endregion
+
 
         private void ToolStripMenuItemShowSettings_Click(object sender, EventArgs e)
         {
@@ -198,15 +351,6 @@ namespace CharmedPointer
 
             // 設定フォームにフォーカスをあてる
             Focus();
-        }
-
-        /// <summary>
-        /// 常駐していても終了させる
-        /// </summary>
-        public void Quit()
-        {
-            isExiting = true;
-            Application.Exit();
         }
 
         private void ToolStripMenuItemQuit_Click(object sender, EventArgs e)
@@ -242,109 +386,15 @@ namespace CharmedPointer
             SelectCharm();
         }
 
-        private void SystemEvents_SessionEnding(object sender, SessionEndingEventArgs e)
-        {
-            Quit();
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // 常駐する場合は閉じるボタンをキャンセルする
-            if (checkBoxUseNotifyIcon.Checked && !isExiting)
-            {
-                Hide();
-                e.Cancel = true;
-            }
-
-            // 終了直前に設定を保存
-            SaveSettings();
-        }
-
-        Charm GetSelectedCharm()
-        {
-            var selection = listViewCharms.SelectedItems;
-            if (selection.Count != 1)
-            {
-                //return null;
-                return defaultCharm;
-
-                //// 選択状態が異常ならば、最初のチャームを選択しなおす
-                //listViewCharms.SelectedItems.Clear();
-                //listViewCharms.Items[0].Selected = true;
-                //return ((ListViewCharmItem)listViewCharms.Items[0]).Charm;
-            }
-
-            return ((ListViewCharmItem)selection[0]).Charm;
-        }
-
-        /// <summary>
-        /// 指定された倍率を実数で返す
-        /// </summary>
-        /// <returns></returns>
-        double GetScaleValue()
-        {
-            const double min = -100.0;
-            double val = trackBarCharmScale.Value;
-            double range = trackBarCharmScale.Maximum - trackBarCharmScale.Minimum;
-            return Math.Pow(10, (val / range / trackBarCharmScale.Minimum * min));
-        }
-
-        void SetScaleValue(double val)
-        {
-            const double min = -100.0;
-            double range = trackBarCharmScale.Maximum - trackBarCharmScale.Minimum;
-            trackBarCharmScale.Value = (int)(Math.Log10(val) * range * trackBarCharmScale.Minimum / min);
-        }
-
-        void SelectCharm()
-        {
-            var charm = GetSelectedCharm();
-            if (charm == null) return;
-            var image = charm.Image;
-
-            double opacity = (double)(charm.Opacity) / 100.0;
-
-            // フォームの値変更時のイベントはスキップさせる
-            isParameterChanging = true;
-
-            numericUpDownCharmWidth.Value = charm.Size.Width;
-            numericUpDownCharmHeight.Value = charm.Size.Height;
-            numericUpDownCharmOriginX.Value = charm.Origin.X;
-            numericUpDownCharmOriginY.Value = charm.Origin.Y;
-            trackBarCharmOpacity.Value = charm.Opacity;
-            SetScaleValue(charm.Scale);
-
-            pointerForm.Opacity = opacity;
-            pointerForm.Origin = new Point((int)(charm.Origin.X * charm.Scale), (int)(charm.Origin.Y * charm.Scale));
-            pointerForm.SetImage(image);
-            pointerForm.Width = (int)(charm.Size.Width * charm.Scale);
-            pointerForm.Height = (int)(charm.Size.Height * charm.Scale);
-
-            pointerForm.Preview();
-
-            // フォームの値変更時のイベントを処理するように戻す
-            isParameterChanging = false;
-
-            ValidateCharmParameters();
-        }
-
-        void ApplyCharmSettings()
-        {
-            var charm = GetSelectedCharm();
-
-            charm.Opacity = (int)(trackBarCharmOpacity.Value);
-            charm.Size.Width = (int)numericUpDownCharmWidth.Value;
-            charm.Size.Height = (int)numericUpDownCharmHeight.Value;
-            charm.Origin.X = (int)numericUpDownCharmOriginX.Value;
-            charm.Origin.Y = (int)numericUpDownCharmOriginY.Value;
-            charm.Scale = GetScaleValue();
-
-            SelectCharm();
-        }
-
         private void buttonCharmEditReset_Click(object sender, EventArgs e)
         {
             SelectCharm();
+        }
+
+        private void CharmParameterChanged(object sender, EventArgs e)
+        {
+            if (isParameterChanging) return;
+            InvalidateCharmParameters();
         }
 
         private void buttonCharmSizeReset_Click(object sender, EventArgs e)
@@ -365,68 +415,10 @@ namespace CharmedPointer
             InvalidateCharmParameters();
         }
 
-        void InvalidateCharmParameters()
-        {
-            ApplyCharmSettings();
-        }
-
-        void ValidateCharmParameters()
-        {
-            toolTipMain.SetToolTip(trackBarCharmScale, (GetScaleValue() * 100.0).ToString("F0") + "%");
-            toolTipMain.SetToolTip(trackBarCharmOpacity, trackBarCharmOpacity.Value.ToString("F0") + "%");
-
-        }
-
-        private void numericUpDownCharmWidth_ValueChanged(object sender, EventArgs e)
-        {
-            if (isParameterChanging) return;
-            //if (checkBoxCharmSizeLink.Checked)
-            //{
-            //    Charm charm = GetSelectedCharm();
-            //    numericUpDownCharmHeight.Value = numericUpDownCharmWidth.Value * charm.Size.Height / charm.Size.Width;
-            //}
-            InvalidateCharmParameters();
-        }
-
-        private void numericUpDownCharmHeight_ValueChanged(object sender, EventArgs e)
-        {
-            if (isParameterChanging) return;
-            //if (checkBoxCharmSizeLink.Checked)
-            //{
-            //    Charm charm = GetSelectedCharm();
-            //    numericUpDownCharmWidth.Value = numericUpDownCharmHeight.Value * charm.Size.Width / charm.Size.Height;
-            //}
-            InvalidateCharmParameters();
-        }
-
-        private void trackBarCharmScale_Scroll(object sender, EventArgs e)
-        {
-            //toolTipMain.SetToolTip(trackBarCharmScale, (GetScaleValue() * 100.0).ToString("F0") + "%");
-            //if (isParameterChanging) return;
-            InvalidateCharmParameters();
-        }
-
         private void buttonCharmScaleReset_Click(object sender, EventArgs e)
         {
             trackBarCharmScale.Value = 0;
-            trackBarCharmScale_Scroll(sender, e);
-        }
-
-        private void trackBarCharmOpacity_Scroll(object sender, EventArgs e)
-        {
-            //TrackBar track = (TrackBar)sender;
-            //toolTipMain.SetToolTip(track, track.Value.ToString("F0") + "%");
-            if (isParameterChanging) return;
-            InvalidateCharmParameters();
-        }
-
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                WindowState = FormWindowState.Normal;
-                Hide();
-            }
+            CharmParameterChanged(sender, e);
         }
     }
 }
