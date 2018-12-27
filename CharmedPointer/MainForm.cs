@@ -24,6 +24,8 @@ namespace CharmedPointer
         /// </summary>
         bool isExiting = false;
 
+        private static int WM_QUERYENDSESSION = 0x11;
+
         /// <summary>
         /// パラメータ変更中はtrueとする
         /// その間ValueChangedイベントを抑制する
@@ -51,7 +53,7 @@ namespace CharmedPointer
 
             // 常駐していても、ログオフ、シャットダウンでは修了できるようにする
             // 参考： https://dobon.net/vb/dotnet/system/sessionending.html
-            SystemEvents.SessionEnding += new SessionEndingEventHandler(SystemEvents_SessionEnding);
+            //SystemEvents.SessionEnding += new SessionEndingEventHandler(SystemEvents_SessionEnding);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -60,7 +62,16 @@ namespace CharmedPointer
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            SystemEvents.SessionEnding -= new SessionEndingEventHandler(SystemEvents_SessionEnding);
+            //SystemEvents.SessionEnding -= new SessionEndingEventHandler(SystemEvents_SessionEnding);
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_QUERYENDSESSION)
+            {
+                isExiting = true;
+            }
+            base.WndProc(ref m);
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
